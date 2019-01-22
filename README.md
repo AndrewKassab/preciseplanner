@@ -4,8 +4,7 @@
   times, and their dates and sort and organize them all in a data
   file. The user will be able to use this program to add more events to the
   file, check for the next upcoming event, see all shows within a specific time frame,
-  and more. 
-- Be aware the default make target is not yet complete, and only the testTime target is functional at the moment.
+  and more.
   
 # TODO LIST
 - Fix timetoString() in Show.cpp
@@ -25,3 +24,6 @@ within just the specific month?
 - Store the objects in binary? Then load them in and reinterpret them. 
 - Use a vector to store them? (or more ideal structure)
 - Report conflicting dates (just in case same show is added twice)
+
+# Contributors
+- Be aware the default makefile target is not yet complete, and only the testTime target is functional at the moment.
