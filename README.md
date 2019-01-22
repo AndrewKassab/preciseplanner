@@ -5,6 +5,7 @@
   file. The user will be able to use this program to add more events to the
   file, check for the next upcoming event, see all shows within a specific time frame,
   and more. 
+- Be aware the default make target is not yet complete, and only the testTime target is functional at the moment.
   
 # TODO LIST
 - Fix timetoString() in Show.cpp
