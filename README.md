@@ -26,4 +26,5 @@ within just the specific month?
 - Report conflicting dates (just in case same show is added twice)
 
 # Contributors
-- Be aware the default makefile target is not yet complete, and only the testTime target is functional at the moment.
+- Be aware the default makefile target is not yet complete, and only the testTime 
+target is functional at the moment.

@@ -68,3 +68,5 @@ testTime: init
 	mv Show.o $(OBJ)/$(SRC)
 	mv testTime $(BUILD)/$(TEST)
 	@echo "Compilation Successful!"
+	@echo "Running testTime..."
+	./$(BUILD)/$(TEST)/testTime
