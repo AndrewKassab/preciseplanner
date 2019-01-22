@@ -1,6 +1,4 @@
 # preciseplanner (v.09)
-- Version: 0.09 
-
 - This command line program will help a user plan out concerts and music events. 
   It will allow the user to input music events, with the corresponding artists, start
   times, and their dates and sort and organize them all in a data
