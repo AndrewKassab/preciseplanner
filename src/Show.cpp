@@ -36,9 +36,14 @@ unsigned int Show::getDay(){
     return day;
 }
 
+/**
+ * Makes sure the user is sure about the show name they entered
+ * 
+ * Returns: true if the user responds yes 
+ */
 bool Show::setName( string n ){
     char response;
-    cout << "Is this correct?: " << n <<  " (y, n)";
+    cout << "Is this correct?: " << n <<  " (y, n): ";
     cin >> response;
     if ( response == 'y' || response == 'Y' ){
         name = n;

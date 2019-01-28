@@ -1,5 +1,5 @@
-#ifndef MUSICPLANNER_SHOW_H
-#define MUSICPLANNER_SHOW_H
+#ifndef SHOW_HPP
+#define SHOW_HPP
 #include <iostream>
 #include <string>
 #include <vector>
@@ -48,12 +48,11 @@ public:
     bool hasTicket();
     
     /**
-     * Compares the time of a show to the time of another show. 
+     * Compares the date of a show to the date of another show. 
      *
      * Returns: true if 'this' is before otherShow
      */
     bool operator>(Show * otherShow);
-
 };
 
 #endif  // MUSICPLANNER_SHOW_H
