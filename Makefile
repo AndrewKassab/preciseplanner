@@ -4,9 +4,10 @@ SRC=src
 BUILD=build
 OBJ=$(BUILD)/obj
 
-HEADERS		= $(SRC)/Show.hpp
-OBJS		= $(OBJ)/Show.o 
-SRCS 		= $(SRC)/Show.cpp
+HEADERS		= $(SRC)/Show.hpp $(SRC)/Planner.hpp
+OBJS		= $(OBJ)/Show.o $(OBJ)/Planner.o $(OBJ)/$(TEST)/testAdd.o \
+			  $(OBJ)/$(TEST)/testTime.o
+SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp
 EXE 		= preciseplanner
 
 # our c++ compiler
@@ -27,10 +28,12 @@ $(EXE): $(OBJS)
 
 
 # compiles object files from their corresponding source files
-.cpp.o:
+$(OBJ)/%.o:$(SRC)/%.cpp
 	@echo "Compiling each C++ source file separately ..."
 	$(CC) -c -g $<
 	@echo ""
+
+$(OBJ)/$(TEST)/%.o:$(TEST)/%.cpp
 
 # object files depend on header files being up to date
 $(OBJS): $(HEADERS)
@@ -56,12 +59,16 @@ new:
 	make clean
 	make
 
+moveobj:
+	@mv testAdd.o $(OBJ)/$(TEST)
+	@mv Show.o Planner.o $(OBJ)/$(SRC)
+	@mv testAdd $(BUILD)/$(TEST)
+
 #
 # Unit tests
 # 
 testTime: init
 	@echo "Compiling testTime.cpp"
-	$(CC) -c -g $(TEST)/testTime.cpp $(SRC)/Show.cpp
 	$(CC) -Wall -o testTime testTime.o Show.o
 	@mv testTime.o $(OBJ)/$(TEST)
 	@mv Show.o $(OBJ)/$(SRC)
@@ -70,13 +77,10 @@ testTime: init
 	@echo "Running testTime..."
 	@./$(BUILD)/$(TEST)/testTime
 
-testAdd: init
+testAdd: init $(OBJS)
 	@echo "Compiling testAdd.cpp"
-	$(CC) -c -g $(TEST)/testAdd.cpp $(SRC)/Show.cpp $(SRC)/Planner.cpp
 	$(CC) -Wall -o testAdd testAdd.o Show.o Planner.o
-	@mv testAdd.o $(OBJ)/$(TEST)
-	@mv Show.o Planner.o $(OBJ)/$(SRC)
-	@mv testAdd $(BUILD)/$(TEST)
+	moveobj
 	@echo "Compilation Successful!"
 	@echo "Running testAdd..."
 	@./$(BUILD)/$(TEST)/testAdd
