@@ -58,14 +58,16 @@ new:
 #
 # Unit tests
 # 
-testTime: init
+testTime: init $(OBJS)
 	@echo "Compiling testTime.cpp"
-	$(CC) -Wall -o testTime testTime.o Show.o
+	$(CC) -c -g $(TEST)/testTime.cpp
+	$(CC) -Wall -o testTime testTime.o $(OBJS)
 	@mv testTime.o $(OBJ)/$(TEST)
-	@mv Show.o $(OBJ)/$(SRC)
 	@mv testTime $(BUILD)/$(TEST)
 	@echo "Compilation Successful!"
-	@echo "Running testTime..."
+	@echo ""
+	@echo "Running testAdd..."
+	@echo ""
 	@./$(BUILD)/$(TEST)/testTime
 
 testAdd: init $(OBJS)
