@@ -5,7 +5,7 @@ BUILD=build
 OBJ=$(BUILD)/obj
 
 HEADERS		= $(SRC)/Show.hpp $(SRC)/Planner.hpp $(SRC)/Schedule.hpp
-OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Planner.o $(SRC)/Schedule.o
+OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Planner.o $(OBJ)/$(SRC)/Schedule.o
 SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp $(SRC)/Schedule.cpp
 EXE 		= preciseplanner
 
@@ -80,5 +80,4 @@ testAdd: init $(OBJS)
 	@echo ""
 	@echo "Running testAdd..."
 	@echo ""
-	@./$(BUILD)/$(TEST)/testAdd
-
+	@./$(BUILD)/$(TEST)/testAdd 
