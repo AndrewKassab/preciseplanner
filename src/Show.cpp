@@ -14,10 +14,10 @@
 #define MIN_PER_HOUR 60
 
 // default constructor
-Show::Show(){ }
+Show::Show(){}
 
 // paramaterized constructor used when reading in from binary file
-Show::Show( string n, string m, int d, int start, bool t ){
+Show::Show( string & n, string & m, int & d, int & start, bool & t ){
     name = n;
     month = m;
     day = d;
@@ -25,31 +25,20 @@ Show::Show( string n, string m, int d, int start, bool t ){
     ticket = t;
 }
 
-string Show::getName(){
-    return name;
-}
-string Show::getMonth(){
-    return month;
-}
-
-unsigned int Show::getDay(){
-    return day;
-}
-
 /**
  * Makes sure the user is sure about the show name they entered
  * 
  * Returns: true if the user responds yes 
  */
-bool Show::setName( string n ){
-    char response;
-    cout << "Is this correct?: " << n <<  " (y, n): ";
+bool Show::setName( string & n ){
+    string response;
+    cout << "Is this correct?: " << n <<  " (y,n): ";
     cin >> response;
-    if ( response == 'y' || response == 'Y' ){
+    if ( response == "y" || response == "Y" ){
         name = n;
         return true;
     }
-    else if ( response == 'n' || response == 'N' ){
+    else if ( response == "n" || response == "N" ){
         return false;
     }
     else {
@@ -63,7 +52,7 @@ bool Show::setName( string n ){
  *
  * Returns: True if valid and successful, false otherwise
  */
-bool Show::setMonth( string inputMonth ){
+bool Show::setMonth( string & inputMonth ){
     // convert to lowercase
     transform( inputMonth.begin(), inputMonth.end(), inputMonth.begin(), ::tolower);
     string months[12] = {"january","february","march","april","may","june","july",
@@ -85,9 +74,9 @@ bool Show::setMonth( string inputMonth ){
  *
  * Returns: True if valid and successful, false otherwise
  */
-bool Show::setDay( int d ){
+bool Show::setDay( int & d ){
 
-    if ( d > MAX_DAYS ){
+    if ( !(d <= MAX_DAYS) && !(d >= 0) ){
         cout << INVALID_MSG << endl;
         return false;
     }
@@ -96,7 +85,7 @@ bool Show::setDay( int d ){
     return true;
 }
 
-bool Show::setTime( string time ){
+bool Show::setTime( string & time ){
    if ( timeFilter( time ) ){
        return true;
    }
@@ -107,7 +96,7 @@ bool Show::setTime( string time ){
  * Makes sure the formatting is correct for the time string 
  * and then converts it accordingly. 
  */
-bool Show::timeFilter( string time ){
+bool Show::timeFilter( string & time ){
    
     // Time isn't formatted correctly because length is incorrect
     if ( time.length() != TIME_LENGTH && time.length() != TIME_LENGTH - 1 ){
@@ -132,7 +121,7 @@ bool Show::timeFilter( string time ){
         return false;
     }
 
-    ptr = &(time.at(0));; // reset back to beginning
+    ptr = &(time.at(0)); // reset back to beginning
 
     unsigned int hours;
     float minutes;
@@ -191,10 +180,6 @@ bool Show::timeFilter( string time ){
     return true;
 }
 
-float Show::getTime(){
-    return startTime;
-}
-
 /** TODO: Fix this function, use testTime for help
  * Separates the hours and minutes of startTime, turns
  * them into a string and concatenates them to form a time string
@@ -220,7 +205,33 @@ string Show::timetoString(){
 
 }
 
-// bool Show::operator>(Show * otherShow){
-// TODO
-// }
+/**
+ * Determines whether a user has a ticket to an event or not
+ * based on their response. Sets ticket boolean appropriately.
+ * 
+ * Returns: true if the response was valid and the ticket field was
+ * successfully set.
+ */
+bool Show::setTicket( string & response ){
+    if ( response == "y" || response == "Y" ){
+        ticket = true;
+        return true;
+    }
+    else if (response == "n" || response == "N" ){
+        ticket = false;
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool Show::hasTicket(){
+    return ticket;
+}
+
+// TODO: Overload operator to check if a show comes before another Show
+bool Show::operator>(Show * otherShow){
+
+}
 

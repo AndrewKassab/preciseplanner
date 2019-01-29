@@ -3,10 +3,12 @@
 
 #include <iostream>
 #include "Show.hpp"
+#include "Schedule.hpp"
 
+// TODO: Add more functionalities
 class Planner{
 public:
-    static void addShows();
+    static void addShows( Schedule * showSchedule );
 };
 
 #endif

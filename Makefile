@@ -4,9 +4,9 @@ SRC=src
 BUILD=build
 OBJ=$(BUILD)/obj
 
-HEADERS		= $(SRC)/Show.hpp $(SRC)/Planner.hpp
-OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Planner.o 
-SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp
+HEADERS		= $(SRC)/Show.hpp $(SRC)/Planner.hpp $(SRC)/Schedule.hpp
+OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Planner.o $(SRC)/Schedule.o
+SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp $(SRC)/Schedule.cpp
 EXE 		= preciseplanner
 
 # our c++ compiler

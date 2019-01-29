@@ -17,15 +17,12 @@ private:
 
 public:
     Show();
-    Show( string n, string m, int d, int start, bool t );
-    string getName();
-    bool setName( string n );
-    string getMonth();
-    bool setMonth( string m );
-    unsigned int getDay();
-    bool setDay( int d ); 
-    float getTime();
-    bool setTime( string t );
+    Show( string & n, string & m, int & d, int & start, bool & t );
+    bool setName( string & n );
+    bool setMonth( string & m );
+    bool setDay( int & d ); 
+    bool setTime( string & t );
+    bool setTicket( string & response );
 
     /**
      * Helper method for setTime, filters a time in the form of
@@ -33,7 +30,7 @@ public:
      *
      * Returns: true if the transformation was successful, false otherwise
      */
-    bool timeFilter( string t );
+    bool timeFilter( string & t );
 
     /**
      * Turns startTime into a string representation.
@@ -53,6 +50,12 @@ public:
      * Returns: true if 'this' is before otherShow
      */
     bool operator>(Show * otherShow);
+
+    // TODO: REMOVE, FOR TESTING PURPOSES ONLY (testTime)
+    float getTime(){
+        return startTime;
+    }
+
 };
 
 #endif  // MUSICPLANNER_SHOW_H
