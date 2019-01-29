@@ -17,7 +17,7 @@
 Show::Show(){}
 
 // paramaterized constructor used when reading in from binary file
-Show::Show( string & n, string & m, int & d, int & start, bool & t ){
+Show::Show( string n, string m, int d, int start, bool t ){
     name = n;
     month = m;
     day = d;
@@ -30,7 +30,7 @@ Show::Show( string & n, string & m, int & d, int & start, bool & t ){
  * 
  * Returns: true if the user responds yes 
  */
-bool Show::setName( string & n ){
+bool Show::setName( string n ){
     string response;
     cout << "Is this correct?: " << n <<  " (y,n): ";
     cin >> response;
@@ -52,7 +52,8 @@ bool Show::setName( string & n ){
  *
  * Returns: True if valid and successful, false otherwise
  */
-bool Show::setMonth( string & inputMonth ){
+bool Show::setMonth( string inputMonth ){
+
     // convert to lowercase
     transform( inputMonth.begin(), inputMonth.end(), inputMonth.begin(), ::tolower);
     string months[12] = {"january","february","march","april","may","june","july",
@@ -69,12 +70,16 @@ bool Show::setMonth( string & inputMonth ){
 
 }
 
+string Show::getMonth(){
+    return month;
+}
+
 /**
  * Makes sure the day is a valid day within range.
  *
  * Returns: True if valid and successful, false otherwise
  */
-bool Show::setDay( int & d ){
+bool Show::setDay( int d ){
 
     if ( !(d <= MAX_DAYS) && !(d >= 0) ){
         cout << INVALID_MSG << endl;
@@ -85,7 +90,11 @@ bool Show::setDay( int & d ){
     return true;
 }
 
-bool Show::setTime( string & time ){
+unsigned int Show::getDay(){
+    return day;
+}
+
+bool Show::setTime( string time ){
    if ( timeFilter( time ) ){
        return true;
    }
@@ -96,7 +105,7 @@ bool Show::setTime( string & time ){
  * Makes sure the formatting is correct for the time string 
  * and then converts it accordingly. 
  */
-bool Show::timeFilter( string & time ){
+bool Show::timeFilter( string time ){
    
     // Time isn't formatted correctly because length is incorrect
     if ( time.length() != TIME_LENGTH && time.length() != TIME_LENGTH - 1 ){
@@ -212,7 +221,7 @@ string Show::timetoString(){
  * Returns: true if the response was valid and the ticket field was
  * successfully set.
  */
-bool Show::setTicket( string & response ){
+bool Show::setTicket( string response ){
     if ( response == "y" || response == "Y" ){
         ticket = true;
         return true;
@@ -230,8 +239,87 @@ bool Show::hasTicket(){
     return ticket;
 }
 
-// TODO: Overload operator to check if a show comes before another Show
-bool Show::operator>(Show * otherShow){
+/**
+ * Operator checks if a show comes before another show by 
+ * comparing their months and dates.
+ * 
+ * Returns: true if (this) comes first or is on the same day
+ * 
+ * TODO: Use as parameter to "sort" so we can sort our schedule,
+ * maybe change to function rather than operator overload if 
+ * the overload cannot be passed in...
+ */
+bool Show::operator<=(Show & otherShow){
+    if (this->monthToInt() < otherShow.monthToInt()){
+        return true;
+    }
+    else if (this->monthToInt() == otherShow.monthToInt()){
+        if ( this->getDay() <= otherShow.getDay() ){
+            return true;
+        }
+        else return false;
+    }
+    else return false;
+}
+
+/**
+ * Returns the month as an int by examining which 
+ * month it is.
+ * 
+ * TODO: Pass in the system time, check the month, and adjust
+ * the int value accordingly by adding 12 if it is the next year 
+ * from now, so that if we are march, and a show is next year's january, 
+ * it doesn't appear to come before one in the rest of the year.
+ */
+unsigned int Show::monthToInt(){
+    unsigned int monthAsInt = 0;
+    if ( month == "january"){
+        monthAsInt = 1; 
+    }
+    else if ( month == "february"){
+        monthAsInt = 2; 
+    }
+    else if ( month == "march"){
+        monthAsInt = 3; 
+    }
+    else if ( month == "april"){
+        monthAsInt = 4; 
+    }
+    else if ( month == "may"){
+        monthAsInt = 5; 
+    }
+    else if ( month == "june"){
+        monthAsInt = 6; 
+    }
+    else if ( month == "july"){
+        monthAsInt = 7; 
+    }
+    else if ( month == "august"){
+        monthAsInt = 8; 
+    }
+    else if ( month == "september"){
+        monthAsInt = 9; 
+    }
+    else if ( month == "october"){
+        monthAsInt = 10; 
+    }
+    else if ( month == "november"){
+        monthAsInt = 11; 
+    }
+    else if ( month == "december"){
+        monthAsInt = 12; 
+    }
+
+    return monthAsInt;
+}
+
+/**
+ * Uses printf to format a show and its contents and 
+ * print it out to the screen.
+ * 
+ * TODO: Write function.
+ */ 
+void Show::printShow(){
 
 }
 

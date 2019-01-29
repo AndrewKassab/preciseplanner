@@ -66,7 +66,7 @@ testTime: init $(OBJS)
 	@mv testTime $(BUILD)/$(TEST)
 	@echo "Compilation Successful!"
 	@echo ""
-	@echo "Running testAdd..."
+	@echo "Running testTime..."
 	@echo ""
 	@./$(BUILD)/$(TEST)/testTime
 
