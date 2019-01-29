@@ -1,4 +1,4 @@
-# preciseplanner (v.09)
+# preciseplanner (v0.2)
 - This command line program will help a user plan out upcoming concerts and music events. 
   It will allow the user to input music events, with the corresponding artists, start
   times, and their dates and sort and organize them all in a data
@@ -8,11 +8,13 @@
   
 # TODO LIST
 - Fix timetoString() in Show.cpp
+- Finish addShow function
 - Overload > operator for show in Show.cpp
+- Finish toString() to print out shows. 
 
 # Ideas / Goals:
 - Option to open / go to URL to purchase tickets for an event.
-- Separate events that you already have tickets purchased to .. (save order numbers)
+- Separate events that you already have tickets purchased to .. (save order numbers?)
 - Clear out events that have already passed, or archive them.
 - Sort by dates 
 - Filter for already existing shows.
@@ -24,7 +26,8 @@ within just the specific month?
 - Store the objects in binary? Then load them in and reinterpret them. 
 - Use a vector to store them? (or more ideal structure)
 - Report conflicting dates (just in case same show is added twice)
+- Festival class that extends show, holds lineup of artists. 
 
 # Contributors
-- Be aware the default makefile target is not yet complete, and only the testTime 
-target is functional at the moment.
+- Makefile targets that currently work: testTime and testAdd . Search code for TODO notes
+and incomplete functions.
