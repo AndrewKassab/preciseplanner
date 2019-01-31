@@ -5,8 +5,10 @@ BUILD=build
 OBJ=$(BUILD)/obj
 
 HEADERS		= $(SRC)/Show.hpp $(SRC)/Planner.hpp $(SRC)/Schedule.hpp
-OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Planner.o $(OBJ)/$(SRC)/Schedule.o
-SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp $(SRC)/Schedule.cpp
+OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Schedule.o \
+			  $(OBJ)/$(SRC)/addshows.o
+SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp $(SRC)/Schedule.cpp \
+			  $(SRC)/addshows.cpp
 EXE 		= preciseplanner
 
 # our c++ compiler
@@ -58,17 +60,17 @@ new:
 #
 # Unit tests
 # 
-testTime: init $(OBJS)
-	@echo "Compiling testTime.cpp"
-	$(CC) -c -g $(TEST)/testTime.cpp
-	$(CC) -Wall -o testTime testTime.o $(OBJS)
-	@mv testTime.o $(OBJ)/$(TEST)
-	@mv testTime $(BUILD)/$(TEST)
+testCompare: init $(OBJS)
+	@echo "Compiling testCompare.cpp"
+	$(CC) -c -g $(TEST)/testCompare.cpp
+	$(CC) -Wall -o testCompare testCompare.o $(OBJS)
+	@mv testCompare.o $(OBJ)/$(TEST)
+	@mv testCompare $(BUILD)/$(TEST)
 	@echo "Compilation Successful!"
 	@echo ""
-	@echo "Running testTime..."
+	@echo "Running testCompare..."
 	@echo ""
-	@./$(BUILD)/$(TEST)/testTime
+	@./$(BUILD)/$(TEST)/testCompare
 
 testAdd: init $(OBJS)
 	@echo "Compiling testAdd.cpp"
