@@ -42,11 +42,6 @@ void Planner::addShows( Schedule * showSchedule ){
         } while ( !(newShow->setDay(showDay)) );
 
         do {
-            cout << "Enter the start time of this show in the format (8:00): ";
-            cin >> showTime;
-        } while ( !(newShow->setTime(showTime)) );
-
-        do {
             cout << "Do you have a ticket to this event? (y/n): ";
             cin >> response;
         } while ( !(newShow->setTicket(response)) );
