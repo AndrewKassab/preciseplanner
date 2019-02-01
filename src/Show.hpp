@@ -23,7 +23,8 @@ private:
 public:
     Show();
     Show( string n, string m, int d, bool t );
-    bool setName( string n );
+    void setName( string n );
+    string getName();
     bool setMonth( string m );
     string getMonth();
     bool setDay( int d ); 
@@ -49,7 +50,7 @@ public:
      *
      * Returns: true if 'this' is before otherShow or the same date.
      */
-    bool operator<=(Show & otherShow);
+    static bool compareDates(Show * showOne, Show * showTwo);
 
     /**
      * Returns an int value representation of a show's month.

@@ -19,26 +19,12 @@ Show::Show( string n, string m, int d, bool t ){
     ticket = t;
 }
 
-/**
- * Makes sure the user is sure about the show name they entered
- * 
- * Returns: true if the user responds yes 
- */
-bool Show::setName( string n ){
-    string response;
-    cout << "Is this correct?: " << n <<  " (y,n): ";
-    cin >> response;
-    if ( response == "y" || response == "Y" ){
-        name = n;
-        return true;
-    }
-    else if ( response == "n" || response == "N" ){
-        return false;
-    }
-    else {
-        cout << INVALID_MSG << endl;
-        setName( n );
-    }
+void Show::setName( string n ){
+    name = n;
+}
+
+string Show::getName(){
+    return name;
 }
 
 /**
@@ -114,21 +100,18 @@ bool Show::hasTicket(){
 }
 
 /**
- * Operator checks if a show comes before another show by 
+ * Checks if a show comes before another show by 
  * comparing their months and dates.
  * 
- * Returns: true if (this) comes first or is on the same day
+ * Returns: true if firstShow comes first or is on the same day
  * 
- * TODO: Use as parameter to "sort" so we can sort our schedule,
- * maybe change to function rather than operator overload if 
- * the overload cannot be passed in...
  */
-bool Show::operator<=(Show & otherShow){
-    if (this->monthToInt() < otherShow.monthToInt()){
+bool Show::compareDates(Show * firstShow, Show * secondShow){
+    if (firstShow->monthToInt() < secondShow->monthToInt()){
         return true;
     }
-    else if (this->monthToInt() == otherShow.monthToInt()){
-        if ( this->getDay() <= otherShow.getDay() ){
+    else if (firstShow->monthToInt() == secondShow->monthToInt()){
+        if ( firstShow->getDay() <= secondShow->getDay() ){
             return true;
         }
         else return false;

@@ -8,7 +8,7 @@
 // TODO: Add more functionalities
 class Planner{
 public:
-    static void addShows( Schedule * showSchedule );
+    static void addShows( Schedule * showSchedule);
 };
 
 #endif

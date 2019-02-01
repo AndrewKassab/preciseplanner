@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iterator>
 #include "Show.hpp"
 
 class Schedule{
@@ -15,6 +16,8 @@ public:
     ~Schedule();
     Schedule( vector<Show*>* showVector );
     void add(Show * newShow);
+    vector<Show*>::iterator begin();
+    vector<Show*>::iterator end();
 
     /**
      * Prints out the entire schedule, using

@@ -20,7 +20,7 @@ void testComparisons(){
     secondShow.setDay(20);
 
     cout << "Running test: June 20th < September 12th" << endl;
-    if ( secondShow <= firstShow ){
+    if ( Show::compareDates(&secondShow, &firstShow) ){
         cout << "\033[1;32m----PASS----\033[0m" << endl;
     } 
     else {
@@ -35,7 +35,7 @@ void testComparisons(){
     secondShow.setDay(21);
 
     cout << "Running test: January 12th < January 21st" << endl;
-    if ( firstShow <= secondShow ){
+    if ( Show::compareDates(&firstShow, &secondShow) ){
         cout << "\033[1;32m----PASS----\033[0m" << endl;
     } 
     else {
@@ -50,7 +50,7 @@ void testComparisons(){
     secondShow.setDay(12);
 
     cout << "Running test: December 12th < December 12st" << endl;
-    if ( firstShow <= secondShow ){
+    if ( Show::compareDates(&firstShow, &secondShow) ){
         cout << "\033[1;32m----PASS----\033[0m" << endl;
     } 
     else {

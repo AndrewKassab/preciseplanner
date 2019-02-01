@@ -13,8 +13,9 @@ Schedule::Schedule( vector<Show*>* showVector ){
 
 // Destructor, deletes all allocated memory
 Schedule::~Schedule(){
-    for (unsigned int i = 0; i < isize; i++){
-        delete schedule->at(i);
+    while ( !schedule->empty()) {
+        delete schedule->back();
+        schedule->pop_back();
     }
     delete schedule;
 }
@@ -37,4 +38,12 @@ void Schedule::printSchedule(){
 // TODO
 void Schedule::printSchedule( string & month ){
 
+}
+
+vector<Show*>::iterator Schedule::begin(){
+    return schedule->begin();
+}
+
+vector<Show*>::iterator Schedule::end(){
+    return schedule->end();
 }

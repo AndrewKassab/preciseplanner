@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 #include "Planner.hpp"
 
@@ -9,9 +10,9 @@ using namespace std;
  * Handles the '-a' parameter where a user is prompted
  * to add new shows to the show database. The user will continue
  * being prompted until they decide to quit.
- * TODO: Finish method 
+ * TODO: Finish method
  */
-void Planner::addShows( Schedule * showSchedule ){
+void Planner::addShows( Schedule * showSchedule){
 
     string response;
     string showName;
@@ -20,43 +21,59 @@ void Planner::addShows( Schedule * showSchedule ){
     string showTime;
     bool hasTicket;
 
-    // loop as long as user wishes to continue adding shows
+    Show * newShow = new Show();
+    
+    // TODO: Fix response bugs...
+    cout << "Enter show name: ";
+    getline(cin,showName);
+
     do {
+    cout << "Enter the month for this show: ";
+        cin >> showMonth;
+    } while ( !(newShow->setMonth(showMonth)));
 
-        Show * newShow = new Show();
-        
-        do {
-            cout << "Enter show name: ";
-            getline(cin,showName);
-        } while ( !(newShow->setName(showName)) );
+    // TODO: make sure user enters an int 
+    do { 
+        cout << "Enter the date for this show: ";
+        cin >> showDay;
+    } while ( !(newShow->setDay(showDay)) );
 
-        do {
-            cout << "Enter the month for this show: ";
-            cin >> showMonth;
-        } while ( !(newShow->setMonth(showMonth)));
+    do {
+        cout << "Do you have a ticket to this event? (y/n): ";
+        cin >> response;
+    } while ( !(newShow->setTicket(response)) );
 
-        // TODO: make sure user enters an int 
-        do { 
-            cout << "Enter the date for this show: ";
-            cin >> showDay;
-        } while ( !(newShow->setDay(showDay)) );
+    response = " ";
 
-        do {
-            cout << "Do you have a ticket to this event? (y/n): ";
-            cin >> response;
-        } while ( !(newShow->setTicket(response)) );
+    cout << "The show you are adding is as follows: ";
+    // TODO: newShow->printShow() 
 
-        response = " ";
+    cout << "Add this show? (y/n): ";
+    cin >> response;
 
-        // Ask user if they are sure
-        // if they are sure
-            // showSchedule.add( newShow );
-            // show had been added
-        // else
-            // don't add show
-            // please try again...
+    if ( response == "y" || response == "Y" ){
+        showSchedule->add(newShow);
+        cout << "Show added!" << endl;
+    }
+    else{
+        cout << "Canceling addition..." << endl;
+    }
+    // prompt user if they want to continue adding shows
+    response = "";
 
-        // prompt user if they want to continue adding shows
+    cout << "Would you like to continue adding shows? (y/n): ";
+    cin >> response;
 
-    } while ( response == "y" || response == "Y" );
+    // call method again if user wishes to continue
+    if (response == "y" || response == "Y"){
+        // clear newline character
+        getchar();
+        addShows(showSchedule);
+    }
+    // sort the schedule and exit the method
+    else {
+        sort(showSchedule->begin(), showSchedule->end(), Show::compareDates );
+        cout << "Finished adding! Exiting... " << endl;
+    }
+
 }
