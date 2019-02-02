@@ -15,7 +15,10 @@ public:
     Schedule();
     ~Schedule();
     Schedule( vector<Show*>* showVector );
+    unsigned int size();
+    bool empty();
     void add(Show * newShow);
+    Show* get(int & index);
     vector<Show*>::iterator begin();
     vector<Show*>::iterator end();
 

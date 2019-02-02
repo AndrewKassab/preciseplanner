@@ -51,6 +51,7 @@ void Planner::addShows( Schedule * showSchedule){
     cout << "Add this show? (y/n): ";
     cin >> response;
 
+    // Make sure user wants to add the show as inputted
     if ( response == "y" || response == "Y" ){
         showSchedule->add(newShow);
         cout << "Show added!" << endl;
@@ -70,7 +71,7 @@ void Planner::addShows( Schedule * showSchedule){
         getchar();
         addShows(showSchedule);
     }
-    // sort the schedule and exit the method
+    // sort the schedule by dates and exit the method
     else {
         sort(showSchedule->begin(), showSchedule->end(), Show::compareDates );
         cout << "Finished adding! Exiting... " << endl;

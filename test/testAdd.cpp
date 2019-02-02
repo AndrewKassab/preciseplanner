@@ -35,7 +35,8 @@ int main(){
     string hasTicket;
     bool ticket;
 
-    //TODO: Finish!
+    // Read in shows from input file and add them into our schedule
+    //TODO: Account for file formatting error ( when stoi fails, catch exception )
     while ( !inputFile.eof() ){
         getline(inputFile, line);
         name = line;   
@@ -63,11 +64,22 @@ int main(){
     // TODO: Make sure newSchedule was sorted properly in ordered dates
 
     ofstream outputFile;
-    outputFile.open("../data/schedule.txt", ios::binary);
+    outputFile.open("data/schedule.txt", ios::binary);
+
     // TODO: write new schedule to output file 
+    for ( int i = 0; i < newSchedule->size(); i++){
+        outputFile << newSchedule->get(i)->getName();
+        outputFile << newSchedule->get(i)->getMonth();
+        outputFile << newSchedule->get(i)->getDay();
+        if ( newSchedule->get(i)->hasTicket()){
+            outputFile << "True";
+        } else outputFile << "False";
+    }
+
 
     // free memory
     outputFile.close();
+    // TODO: fix bugs with deleting schedule
     //delete newSchedule;
 
     return 0;
