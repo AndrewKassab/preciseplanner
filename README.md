@@ -7,10 +7,9 @@
   and more.
   
 # TODO LIST
-- Fix timetoString() in Show.cpp
 - Finish addShow function
-- Overload > operator for show in Show.cpp
-- Finish toString() to print out shows. 
+- Finish printShow() and printSchedule() functions. 
+- Filter for already existing shows when adding a show 
 
 # Ideas / Goals:
 - Option to open / go to URL to purchase tickets for an event.
@@ -29,5 +28,5 @@ within just the specific month?
 - Festival class that extends show, holds lineup of artists. 
 
 # Contributors
-- Makefile targets that currently work: testTime and testAdd . Search code for TODO notes
-and incomplete functions.
+- Makefile targets that currently work: testCompare and testAdd . 
+- Search code for TODO notes and incomplete functions.
