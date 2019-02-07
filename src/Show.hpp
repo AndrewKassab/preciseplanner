@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -33,10 +34,8 @@ public:
 
     /**
      * Prints out a show and all its contents in the following format:
-     * Show_name on Month - Day - Year
-     * Starts at start_time
+     * Month - Day - Year: Show_name
      * 
-     * TODO:
      */
     void printShow();
 
@@ -59,6 +58,12 @@ public:
      * Returns: int representation of month, (1-12)
      */
     unsigned int monthToInt();
+
+    /**
+     * Writes a show's contents to a file in a format to later
+     * be read and interpreted.
+     */
+    void writeToFile(ofstream & outputFile);
 
 };
 

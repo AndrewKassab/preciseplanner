@@ -8,11 +8,11 @@ using namespace std;
 
 /**
  * Handles the '-a' parameter where a user is prompted
- * to add new shows to the show database. The user will continue
- * being prompted until they decide to quit.
+ * to add new shows to the schedule. The user will continue
+ * being prompted until they decide to quit. 
  * TODO: Finish method
  */
-void Planner::addShows( Schedule * showSchedule){
+void Planner::addShows( Schedule * showSchedule ){
 
     string response;
     string showName;
@@ -26,6 +26,7 @@ void Planner::addShows( Schedule * showSchedule){
     // TODO: Fix response bugs...
     cout << "Enter show name: ";
     getline(cin,showName);
+    newShow->setName(showName);
 
     do {
     cout << "Enter the month for this show: ";
@@ -45,8 +46,8 @@ void Planner::addShows( Schedule * showSchedule){
 
     response = " ";
 
-    cout << "The show you are adding is as follows: ";
-    // TODO: newShow->printShow() 
+    cout << "The show you are adding is as follows: " << endl;
+    newShow->printShow();
 
     cout << "Add this show? (y/n): ";
     cin >> response;
@@ -59,9 +60,9 @@ void Planner::addShows( Schedule * showSchedule){
     else{
         cout << "Canceling addition..." << endl;
     }
+
     // prompt user if they want to continue adding shows
     response = "";
-
     cout << "Would you like to continue adding shows? (y/n): ";
     cin >> response;
 
@@ -70,11 +71,23 @@ void Planner::addShows( Schedule * showSchedule){
         // clear newline character
         getchar();
         addShows(showSchedule);
+        return;
     }
+
     // sort the schedule by dates and exit the method
-    else {
-        sort(showSchedule->begin(), showSchedule->end(), Show::compareDates );
-        cout << "Finished adding! Exiting... " << endl;
+    sort(showSchedule->begin(), showSchedule->end(), Show::compareDates );
+
+    //TODO: Fix segfault 
+    ofstream outputFile;
+    outputFile.open("data/schedule.txt", ios::binary);
+
+    for ( int i = 0; i < showSchedule->size(); i++){
+        showSchedule->get(i)->writeToFile(outputFile);
     }
+
+    // free memory
+    outputFile.close();
+
+    cout << "Finished adding! Exiting... " << endl;
 
 }
