@@ -34,20 +34,27 @@ bool Schedule::empty(){
 
 /**
  *  Add a show to the schedule. Adjust size accordingly
- * TODO: Finish method
  */
 void Schedule::add( Show * newShow ){
     schedule->push_back(newShow);
-    // sort the schedule by show times
     isize++;
 }
 
-// TODO:
+/**
+ * Prints out the entire schedule, using the printShow method
+ * for each show.
+ * TODO:
+ */
 void Schedule::printSchedule(){
 
 }
 
-// TODO:
+/**
+ * Prints out the shows in the schedule that take place
+ * during the specified month, using the printShow method
+ * for each show.
+ * TODO:
+ */
 void Schedule::printSchedule( string & month ){
 
 }

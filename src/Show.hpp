@@ -10,8 +10,8 @@ using namespace std;
 /**
  * Stores a show object.
  * 
- * TODO: Add in order number information if user has a 
- * ticket to this event.
+ * TODO: Function to search google for a show 
+ * and open the results in a webpage
  */
 class Show{
 
@@ -58,12 +58,6 @@ public:
      * Returns: int representation of month, (1-12)
      */
     unsigned int monthToInt();
-
-    /**
-     * Writes a show's contents to a file in a format to later
-     * be read and interpreted.
-     */
-    void writeToFile(ofstream & outputFile);
 
 };
 

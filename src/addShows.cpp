@@ -10,7 +10,7 @@ using namespace std;
  * Handles the '-a' parameter where a user is prompted
  * to add new shows to the schedule. The user will continue
  * being prompted until they decide to quit. 
- * TODO: Finish method
+ * TODO: Filter out duplicates 
  */
 void Planner::addShows( Schedule * showSchedule ){
 
@@ -77,13 +77,21 @@ void Planner::addShows( Schedule * showSchedule ){
     // sort the schedule by dates and exit the method
     sort(showSchedule->begin(), showSchedule->end(), Show::compareDates );
 
-    //TODO: Fix segfault 
     ofstream outputFile;
     outputFile.open("data/schedule.txt", ios::binary);
 
+    // output schedule into file
     for ( int i = 0; i < showSchedule->size(); i++){
-        showSchedule->get(i)->writeToFile(outputFile);
+        Show currentShow = *(showSchedule->get(i));
+        outputFile << currentShow.getName() << "\n";
+        outputFile << currentShow.getMonth() << "\n";
+        outputFile << currentShow.getDay() << "\n";
+        if ( currentShow.hasTicket() ){
+            outputFile << "T" << "\n";
+        } else outputFile << "F" << "\n";
     }
+
+    outputFile << "\n";
 
     // free memory
     outputFile.close();

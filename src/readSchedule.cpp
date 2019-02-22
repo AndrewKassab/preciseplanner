@@ -14,8 +14,13 @@ Schedule * Planner::readSchedule(){
 
     // Open file
     inputFile.open( FILE_PATH , ios::binary);
+    
+    if (!inputFile){
+        cout << "File not found, new file created...\n" << endl;
+        return newSchedule;
+    }
 
-    string line; 
+    string line = "."; 
     string name;
     string month;
     unsigned int day;
@@ -24,24 +29,23 @@ Schedule * Planner::readSchedule(){
     bool ticket;
 
     // Read in shows from input file and add them into our schedule
-    while ( inputFile ){
+    while ( 1 ){
         getline(inputFile, line);
-        name = line;   
-        getline(inputFile, line);
-        month = line;
-        if ( inputFile.eof()){
+        if ( line == "" ){
             break;
         }
+        name = line;
+        getline(inputFile, line);
+        month = line;
         getline(inputFile, line);
         day = stoi(line);
         getline(inputFile, line);
         string hasTicket = line;
-        if ( line == "True" ){
+        if ( line == "T" ){
             ticket = true;
         } else ticket = false;
-        getline(inputFile, line);
-        Show newShow(name,month,day,ticket);
-        newSchedule->add(&newShow);
+        Show * newShow = new Show(name,month,day,ticket);
+        newSchedule->add(newShow);
     }
 
     // close input file

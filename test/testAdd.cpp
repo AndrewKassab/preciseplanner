@@ -9,7 +9,7 @@ int main(){
     Planner::addShows( newSchedule );
 
     // TODO: fix bugs with deleting schedule
-    //delete showSchedule;
+    delete newSchedule;
 
     return 0;
 }

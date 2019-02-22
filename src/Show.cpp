@@ -176,20 +176,3 @@ unsigned int Show::monthToInt(){
 void Show::printShow(){
     cout << monthToInt() << "-" << day << ": " << name << endl;
 }
-
-/**
- * Writes a show's contents to a file with each variable
- * on a different line. If the ticket value is true, "True" 
- * will be written in place, otherwise it will write "False"
- * 
- * Parameters: outputFile - file being written to 
- */
-void Show::writeToFile(ofstream & outputFile){
-    outputFile << name << "\n";
-    outputFile << month << "\n";
-    outputFile << day << "\n";
-    if ( ticket ){
-        outputFile << "True" << "\n";
-    } else outputFile << "False" << "\n";
-}
-

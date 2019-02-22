@@ -23,9 +23,7 @@ public:
     vector<Show*>::iterator end();
 
     /**
-     * Prints out the entire schedule, using
-     * the toString() method of each Show.
-     * 
+     * Prints out the entire schedule 
      * TODO:
      */
     void printSchedule();
@@ -33,7 +31,6 @@ public:
     /**
      * Only prints out shows within that schedule that take place
      * during a given month.
-     * 
      * TODO:
      */
     void printSchedule( string & month );
