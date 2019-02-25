@@ -20,6 +20,7 @@ public:
      * Reads in our schedule from a file.
      */
     static Schedule * readSchedule();
+
 };
 
 #endif

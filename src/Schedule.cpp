@@ -43,10 +43,12 @@ void Schedule::add( Show * newShow ){
 /**
  * Prints out the entire schedule, using the printShow method
  * for each show.
- * TODO:
+ * TODO: Change to use an iterator instead
  */
 void Schedule::printSchedule(){
-
+    for ( int i = 0; i < schedule->size(); i++){
+        schedule->at(i)->printShow();
+    }
 }
 
 /**
@@ -57,6 +59,21 @@ void Schedule::printSchedule(){
  */
 void Schedule::printSchedule( string & month ){
 
+}
+
+/**
+ * TODO: Print the schedule of shows but with extended information
+ * such as whether the user holds a ticket.
+ */
+void Schedule::printMore(){
+
+}
+
+/**
+ * Prints the very next upcoming show (the first in our schedule)
+ */
+void Schedule::printNext(){
+    schedule->at(0)->printShow();
 }
 
 // Returns a Show* object from our schedule at the specified index.

@@ -31,6 +31,8 @@ string Show::getName(){
  * Makes sure a valid month is entered
  *
  * Returns: True if valid and successful, false otherwise
+ * TODO: Adjust to accept numbers as valid input ( 1 - 12 ), 
+ * change to store the month as an integer instead.
  */
 bool Show::setMonth( string inputMonth ){
 
@@ -171,8 +173,30 @@ unsigned int Show::monthToInt(){
 }
 
 /**
- * Print a show and its contents to the screen.
+ * Print a show and its contents to the screen. Lines
+ * up values properly.
  */ 
 void Show::printShow(){
-    cout << monthToInt() << "-" << day << ": " << name << endl;
+    if ( day < 10 ){
+        if ( monthToInt() < 10 ){
+            cout << "0" << monthToInt() << "-0" << day << ": " << name << endl;
+        }
+        else {
+            cout << monthToInt() << "-0" << day << ": " << name << endl;
+        }
+    } else {
+        if ( monthToInt() < 10 ){
+            cout << "0" << monthToInt() << "-" << day << ": " << name << endl;
+        }
+        else {
+            cout << monthToInt() << "-" << day << ": " << name << endl;
+        }
+    }
+}
+
+/**
+ * TODO: Print the show + other important information
+ */
+void Show::printAll(){
+
 }

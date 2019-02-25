@@ -24,16 +24,24 @@ public:
 
     /**
      * Prints out the entire schedule 
-     * TODO:
      */
     void printSchedule();
 
     /**
      * Only prints out shows within that schedule that take place
      * during a given month.
-     * TODO:
      */
     void printSchedule( string & month );
+
+    /**
+     * Prints out the next show on the schedule 
+     */
+    void printNext();
+
+    /**
+     * Prints out the schedule with extended information.
+     */
+    void printMore();
 };
 
 

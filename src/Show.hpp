@@ -40,6 +40,11 @@ public:
     void printShow();
 
     /**
+     * Prints a show with all the details / information
+     */
+    void printAll();
+
+    /**
      * Returns: true if the user has a ticket to the event.
      */
     bool hasTicket();

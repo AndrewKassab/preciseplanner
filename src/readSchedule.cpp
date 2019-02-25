@@ -5,6 +5,9 @@
  * uses it to load in our schedule of shows. 
  * 
  * Returns: Schedule of shows
+ * 
+ * TODO: Filter out or archive shows that have already passed,
+ * output them to an archive file
  */
 Schedule * Planner::readSchedule(){
     
