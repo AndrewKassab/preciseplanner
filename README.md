@@ -24,5 +24,5 @@ within just the specific month?
 - Festival class that extends show, holds lineup of artists. 
 
 # Contributors
-- Makefile targets that currently work: testCompare and testAdd . 
+- Makefile targets that currently work: testCompare , testAdd, and testPrint . 
 - Search code for TODO notes and incomplete functions.
