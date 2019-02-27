@@ -6,9 +6,10 @@ OBJ=$(BUILD)/obj
 
 HEADERS		= $(SRC)/Show.hpp $(SRC)/Planner.hpp $(SRC)/Schedule.hpp
 OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Schedule.o \
-			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readSchedule.o
+			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readSchedule.o \
+			  $(OBJ)/$(SRC)/main.o 
 SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp $(SRC)/Schedule.cpp \
-			  $(SRC)/addShows.cpp $(SRC)/readSchedule.cpp
+			  $(SRC)/addShows.cpp $(SRC)/readSchedule.cpp $(SRC)/main.cpp
 EXE 		= preciseplanner
 
 # our c++ compiler
