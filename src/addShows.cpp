@@ -17,9 +17,8 @@ void Planner::addShows( Schedule * showSchedule ){
     string response;
     string showName;
     string showMonth;
-    int showDay;
+    string showDay;
     string showTime;
-    bool hasTicket;
 
     Show * newShow = new Show();
     
@@ -33,18 +32,10 @@ void Planner::addShows( Schedule * showSchedule ){
         cin >> showMonth;
     } while ( !(newShow->setMonth(showMonth)));
 
-    // TODO: make sure user enters an int 
     do { 
         cout << "Enter the date for this show: ";
         cin >> showDay;
     } while ( !(newShow->setDay(showDay)) );
-
-    do {
-        cout << "Do you have a ticket to this event? (y/n): ";
-        cin >> response;
-    } while ( !(newShow->setTicket(response)) );
-
-    response = " ";
 
     cout << "The show you are adding is as follows: " << endl;
     newShow->printShow();
@@ -86,9 +77,6 @@ void Planner::addShows( Schedule * showSchedule ){
         outputFile << currentShow.getName() << "\n";
         outputFile << currentShow.getMonth() << "\n";
         outputFile << currentShow.getDay() << "\n";
-        if ( currentShow.hasTicket() ){
-            outputFile << "T" << "\n";
-        } else outputFile << "F" << "\n";
     }
 
     outputFile << "\n";

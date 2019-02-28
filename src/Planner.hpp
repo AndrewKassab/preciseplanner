@@ -5,8 +5,18 @@
 #include "Show.hpp"
 #include "Schedule.hpp"
 
-#define FILE_PATH "data/schedule.txt"
-#define FLAGS "apmnh"
+#define FILE_PATH "/home/precisemotion/Documents/worksapce/cpp/preciseplanner/data/schedule.txt"
+#define FLAGS "apnh"
+#define PRINT_FLAGS "m"
+
+#define ADD_FLAG 'a'
+#define PRINT_FLAG 'p'
+#define NEXT_FLAG 'n'
+#define HELP_FLAG 'h'
+#define UNKNOWN_FLAG '?'
+#define MONTH_FLAG 'm'
+
+#define INVALID_MONTH "Invalid month input specified, exiting..."
 
 #define STR_USAGE \
 "Usage: planner [-apnmh]\n"\
@@ -16,6 +26,8 @@
 "      \t in current or specified month\n"\
 "   -n \t prints out the next show\n"\
 "   -h \t help, displays usage information\n"
+
+#define STR_EXTRA_ARG "Invalid, extra arguments detected"
 
 // TODO: Add more functionalities
 class Planner{
@@ -30,6 +42,16 @@ public:
      * Reads in our schedule from a file.
      */
     static Schedule * readSchedule();
+
+    /**
+     * Converts a string representation of a month to a number
+     */
+    static unsigned int monthToInt( string inputMonth );
+
+    /**
+     * Checks if a month input is valid 
+     */
+    static bool monthIsValid( string inputMonth );
 
 };
 

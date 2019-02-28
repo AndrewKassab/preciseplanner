@@ -15,9 +15,9 @@ void testComparisons(){
     /*  Test One (general case) */
 
     firstShow.setMonth("September");
-    firstShow.setDay(12);
+    firstShow.setDay("12");
     secondShow.setMonth("June");
-    secondShow.setDay(20);
+    secondShow.setDay("20");
 
     cout << "Running test: June 20th < September 12th" << endl;
     if ( Show::compareDates(&secondShow, &firstShow) ){
@@ -30,9 +30,9 @@ void testComparisons(){
     /*  Test Two  (same month) */
 
     firstShow.setMonth("January");
-    firstShow.setDay(12);
+    firstShow.setDay("12");
     secondShow.setMonth("January");
-    secondShow.setDay(21);
+    secondShow.setDay("21");
 
     cout << "Running test: January 12th < January 21st" << endl;
     if ( Show::compareDates(&firstShow, &secondShow) ){
@@ -45,9 +45,9 @@ void testComparisons(){
     /* Test Three (same date) */
 
     firstShow.setMonth("December");
-    firstShow.setDay(12);
+    firstShow.setDay("12");
     secondShow.setMonth("December");
-    secondShow.setDay(12);
+    secondShow.setDay("12");
 
     cout << "Running test: December 12th < December 12st" << endl;
     if ( Show::compareDates(&firstShow, &secondShow) ){
@@ -59,7 +59,6 @@ void testComparisons(){
 
     /* TODO: write more tests */
     
-
 }
 
 int main(){

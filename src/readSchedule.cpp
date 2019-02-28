@@ -25,7 +25,7 @@ Schedule * Planner::readSchedule(){
 
     string line = "."; 
     string name;
-    string month;
+    unsigned int month;
     unsigned int day;
     float startTime;
     string hasTicket;
@@ -39,15 +39,10 @@ Schedule * Planner::readSchedule(){
         }
         name = line;
         getline(inputFile, line);
-        month = line;
+        month = stoi(line);
         getline(inputFile, line);
         day = stoi(line);
-        getline(inputFile, line);
-        string hasTicket = line;
-        if ( line == "T" ){
-            ticket = true;
-        } else ticket = false;
-        Show * newShow = new Show(name,month,day,ticket);
+        Show * newShow = new Show(name,month,day);
         newSchedule->add(newShow);
     }
 
