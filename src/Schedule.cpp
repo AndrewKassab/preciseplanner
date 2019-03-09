@@ -55,17 +55,26 @@ void Schedule::printSchedule(){
  * Prints out the shows in the schedule that take place
  * during the specified month, using the printShow method
  * for each show.
- * TODO:
+ * TODO: Finish and Change indentation
  */
-void Schedule::printSchedule( string & month ){
+void Schedule::printSchedule( int & month ){
+  
+  Show * currentShow;
+  int index = 0;
+  
+  // search schedule till we find the first show in the given month
+  // of interest
+  while ( !currentShow ){
+    if ( schedule->at(index)->getMonth() == month ){
+      currentShow = schedule->at(index);
+    }
+    index++;
+  }
 
-}
-
-/**
- * TODO: Print the schedule of shows but with extended information
- * such as whether the user holds a ticket.
- */
-void Schedule::printMore(){
+  while ( currentShow->getMonth() == month ){
+    // TODO: print that show
+    // set currentShow to next show 
+  }
 
 }
 

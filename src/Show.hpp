@@ -33,7 +33,6 @@ public:
     /**
      * Prints out a show and all its contents in the following format:
      * Month - Day - Year: Show_name
-     * 
      */
     void printShow();
 
