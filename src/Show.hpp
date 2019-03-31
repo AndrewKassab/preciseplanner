@@ -16,37 +16,37 @@ using namespace std;
 class Show{
 
 private:
-    string name;
-    unsigned int month;
-    unsigned int day;
+  string name;
+  unsigned int month;
+  unsigned int day;
 
 public:
-    Show();
-    Show( string n, unsigned int m, unsigned int d);
-    void setName( string n );
-    string getName();
-    bool setMonth( string m );
-    unsigned int getMonth();
-    bool setDay( string d ); 
-    unsigned int getDay();
+  Show();
+  Show( string n, unsigned int m, unsigned int d);
+  void setName( string n );
+  string getName();
+  bool setMonth( string m );
+  unsigned int getMonth();
+  bool setDay( string d ); 
+  unsigned int getDay();
 
-    /**
-     * Prints out a show and all its contents in the following format:
-     * Month - Day - Year: Show_name
-     */
-    void printShow();
+  /**
+   * Prints out a show and all its contents in the following format:
+   * Month - Day - Year: Show_name
+   */
+  void printShow();
 
-    /**
-     * Prints a show with all the details / information
-     */
-    void printAll();
+  /**
+   * Prints a show with all the details / information
+   */
+  void printAll();
 
-    /**
-     * Compares the date of a show to the date of another show. 
-     *
-     * Returns: true if 'this' is before otherShow or the same date.
-     */
-    static bool compareDates(Show * showOne, Show * showTwo);
+  /**
+   * Compares the date of a show to the date of another show. 
+   *
+   * Returns: true if 'this' is before otherShow or the same date.
+   */
+  static bool compareDates(Show * showOne, Show * showTwo);
 
 };
 

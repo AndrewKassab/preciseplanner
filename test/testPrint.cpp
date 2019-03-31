@@ -3,13 +3,13 @@
 
 int main(){
 
-    Schedule * newSchedule = Planner::readSchedule();
+  Schedule * newSchedule = Planner::readSchedule();
 
-    newSchedule->printSchedule();
+  newSchedule->printSchedule();
 
-    // TODO: test other print methods
-    //newSchedule.printSchedule("april");
+  // TODO: test other print methods
+  //newSchedule.printSchedule("april");
 
-    newSchedule->printNext();
+  newSchedule->printNext();
 
 }

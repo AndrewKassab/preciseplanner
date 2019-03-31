@@ -13,17 +13,17 @@ Show::Show(){}
 
 // paramaterized constructor used when reading in from binary file
 Show::Show( string n, unsigned int m, unsigned int d){
-    name = n;
-    month = m;
-    day = d;
+  name = n;
+  month = m;
+  day = d;
 }
 
 void Show::setName( string n ){
-    name = n;
+  name = n;
 }
 
 string Show::getName(){
-    return name;
+  return name;
 }
 
 /**
@@ -33,43 +33,43 @@ string Show::getName(){
  */
 bool Show::setMonth( string inputMonth ){
 
-    // User input a month as a string
-    if ( inputMonth.length() > 2 ){
-        // convert to lowercase
-        transform( inputMonth.begin(), inputMonth.end(), inputMonth.begin(), ::tolower);
-        string months[12] = {"january","february","march","april","may","june","july",
-                                "august", "september", "october", "november", "december" };
-        for ( string i : months ){
-            if (inputMonth == i ){
-                month = Planner::monthToInt(inputMonth);
-                return true;
-            }
-        }
-
-        cout << INVALID_MSG << endl;
-        return false;
-    } 
-
-    // User input a month as an int 
-    try {
-        month = stoi(inputMonth);
-    // User did not input an integer
-    } catch ( invalid_argument& ){
-        cout << INVALID_MSG << endl;
-        return false;
+  // User input a month as a string
+  if ( inputMonth.length() > 2 ){
+    // convert to lowercase
+    transform( inputMonth.begin(), inputMonth.end(), inputMonth.begin(), ::tolower);
+    string months[12] = {"january","february","march","april","may","june","july",
+                            "august", "september", "october", "november", "december" };
+    for ( string i : months ){
+      if (inputMonth == i ){
+        month = Planner::monthToInt(inputMonth);
+        return true;
+      }
     }
 
-    if ( month > 12 || month < 1 ){
-        cout << INVALID_MSG << endl;
-        return false;
-    }
+    cout << INVALID_MSG << endl;
+    return false;
+  } 
 
-    return true;
+  // User input a month as an int 
+  try {
+    month = stoi(inputMonth);
+  // User did not input an integer
+  } catch ( invalid_argument& ){
+    cout << INVALID_MSG << endl;
+    return false;
+  }
+
+  if ( month > 12 || month < 1 ){
+    cout << INVALID_MSG << endl;
+    return false;
+  }
+
+  return true;
 
 }
 
 unsigned int Show::getMonth(){
-    return month;
+  return month;
 }
 
 /**
@@ -79,29 +79,29 @@ unsigned int Show::getMonth(){
  */
 bool Show::setDay( string d ){
 
-    try {
-        day = stoi(d);
-    } catch ( invalid_argument& ){
-        cout << INVALID_MSG << endl;
-        return false;
-    }
+  try {
+    day = stoi(d);
+  } catch ( invalid_argument& ){
+    cout << INVALID_MSG << endl;
+    return false;
+  }
 
-    if ( (day >= MAX_DAYS) || (day == 0) ){
-        cout << INVALID_MSG << endl;
-        day = 0;
-        return false;
-    }
+  if ( (day >= MAX_DAYS) || (day == 0) ){
+    cout << INVALID_MSG << endl;
+    day = 0;
+    return false;
+  }
 
-    /**
-     * TODO: Add month edge cases, for example if the month
-     * is February (2), then the day cannot be 31 
-     */
+  /**
+   * TODO: Add month edge cases, for example if the month
+   * is February (2), then the day cannot be 31 
+   */
 
-    return true;
+  return true;
 }
 
 unsigned int Show::getDay(){
-    return day;
+  return day;
 }
 
 /**
@@ -112,16 +112,16 @@ unsigned int Show::getDay(){
  * 
  */
 bool Show::compareDates(Show * firstShow, Show * secondShow){
-    if (firstShow->getMonth() < secondShow->getMonth()){
-        return true;
-    }
-    else if (firstShow->getMonth() == secondShow->getMonth()){
-        if ( firstShow->getDay() <= secondShow->getDay() ){
-            return true;
-        }
-        else return false;
+  if (firstShow->getMonth() < secondShow->getMonth()){
+    return true;
+  }
+  else if (firstShow->getMonth() == secondShow->getMonth()){
+    if ( firstShow->getDay() <= secondShow->getDay() ){
+      return true;
     }
     else return false;
+  }
+  else return false;
 }
 
 /**
@@ -129,21 +129,21 @@ bool Show::compareDates(Show * firstShow, Show * secondShow){
  * up values properly.
  */ 
 void Show::printShow(){
-    if ( day < 10 ){
-        if ( month < 10 ){
-            cout << "0" << month << "-0" << day << ": " << name << endl;
-        }
-        else {
-            cout << month << "-0" << day << ": " << name << endl;
-        }
-    } else {
-        if ( month < 10 ){
-            cout << "0" << month << "-" << day << ": " << name << endl;
-        }
-        else {
-            cout << month << "-" << day << ": " << name << endl;
-        }
+  if ( day < 10 ){
+    if ( month < 10 ){
+      cout << "0" << month << "-0" << day << ": " << name << endl;
     }
+    else {
+      cout << month << "-0" << day << ": " << name << endl;
+    }
+  } else {
+    if ( month < 10 ){
+      cout << "0" << month << "-" << day << ": " << name << endl;
+    }
+    else {
+      cout << month << "-" << day << ": " << name << endl;
+    }
+  }
 }
 
 /**

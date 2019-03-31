@@ -27,31 +27,31 @@
 "   -n \t prints out the next show\n"\
 "   -h \t help, displays usage information\n"
 
-#define STR_EXTRA_ARG "Invalid, extra arguments detected"
+#define STR_EXTRA_ARG "Invalid, extra arguments detected\n"
 
 // TODO: Add more functionalities
 class Planner{
 public:
 
-    /**
-     * Adds shows to our schedule
-     */
-    static void addShows( Schedule * showSchedule);
+  /**
+   * Adds shows to our schedule
+   */
+  static void addShows( Schedule * showSchedule);
 
-    /**
-     * Reads in our schedule from a file.
-     */
-    static Schedule * readSchedule();
+  /**
+   * Reads in our schedule from a file.
+   */
+  static Schedule * readSchedule();
 
-    /**
-     * Converts a string representation of a month to a number
-     */
-    static unsigned int monthToInt( string inputMonth );
+  /**
+   * Converts a string representation of a month to a number
+   */
+  static unsigned int monthToInt( string inputMonth );
 
-    /**
-     * Checks if a month input is valid 
-     */
-    static bool monthIsValid( string inputMonth );
+  /**
+   * Checks if a month input is valid 
+   */
+  static bool monthIsValid( string inputMonth );
 
 };
 

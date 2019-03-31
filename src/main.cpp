@@ -17,91 +17,91 @@
  */                   
 int main( int argc, char *argv[] ){
 
-    int opt;
-    bool print = false;
-    bool add = false;
-    bool next = false;
+  int opt;
+  bool print = false;
+  bool add = false;
+  bool next = false;
 
-    //while ((opt = getopt(argc, argv, FLAGS))){
+  //while ((opt = getopt(argc, argv, FLAGS))){
 
-    opt = getopt(argc, argv, FLAGS);
-    switch( opt ){
-        case ADD_FLAG:
-            add = true;
-            break;
-        case PRINT_FLAG:
-            print = true;
-            break;
-        case NEXT_FLAG:
-            next = true;
-            break;
-        case HELP_FLAG:
-            cout << STR_USAGE;
-            return EXIT_SUCCESS;
-        // Invalid flags 
-        case UNKNOWN_FLAG:
-            cerr << STR_USAGE;
-            return EXIT_FAILURE;
-    }
-
-    Schedule * ourSchedule = Planner::readSchedule();
-    
-    // Add shows functionality
-    if ( add ){
-        if ( optind != argc ){
-            cerr << STR_EXTRA_ARG;
-            cerr << STR_USAGE;
-            return EXIT_FAILURE;
-        }
-        
-        Planner::addShows(ourSchedule);
+  opt = getopt(argc, argv, FLAGS);
+  switch( opt ){
+      case ADD_FLAG:
+        add = true;
+        break;
+      case PRINT_FLAG:
+        print = true;
+        break;
+      case NEXT_FLAG:
+        next = true;
+        break;
+      case HELP_FLAG:
+        cout << STR_USAGE;
         return EXIT_SUCCESS;
-    }
-
-    // Print the next show
-    if ( next ){
-        // TODO: call printNext()
-        return EXIT_SUCCESS;
-    }
-
-    // no functionality edge case  
-    if ( !print ){
+      // Invalid flags 
+      case UNKNOWN_FLAG:
         cerr << STR_USAGE;
         return EXIT_FAILURE;
-    }
+  }
 
-    // TODO: Set month to current time 
-    string month;
-    bool printMonth = false;
-    
-    // if p is followed by m, print only for a specific month
-    if ( (opt = getopt(argc, argv, PRINT_FLAGS) == MONTH_FLAG ) ){
-        printMonth = true; 
-        // if there is a month argument, print shows in that month
-        if ( optarg ){
-            month = optarg;
-        }
-    }
-    
+  Schedule * ourSchedule = Planner::readSchedule();
+  
+  // Add shows functionality
+  if ( add ){
     if ( optind != argc ){
-        cerr << STR_EXTRA_ARG;
-        cerr << STR_USAGE;
-        return EXIT_FAILURE;
+      cerr << STR_EXTRA_ARG;
+      cerr << STR_USAGE;
+      return EXIT_FAILURE;
     }
-
-    if ( !Planner::monthIsValid(month)){
-        cerr << INVALID_MONTH << endl;
-        return EXIT_FAILURE;
-    }
-
-    //unsigned int monthInt = Planner::monthToInt(month);
-
-    if ( printMonth ){
-        // TODO: call ourSchedule->printSchedule( monthInt )
-    }
-
-    ourSchedule->printSchedule();
-    
+      
+    Planner::addShows(ourSchedule);
     return EXIT_SUCCESS;
+  }
+
+  // Print the next show
+  if ( next ){
+    // TODO: call printNext()
+    return EXIT_SUCCESS;
+  }
+
+  // no functionality edge case  
+  if ( !print ){
+    cerr << STR_USAGE;
+    return EXIT_FAILURE;
+  }
+
+  // TODO: Set month to current time 
+  string month;
+  bool printMonth = false;
+  
+  // if p is followed by m, print only for a specific month
+  if ( (opt = getopt(argc, argv, PRINT_FLAGS) == MONTH_FLAG ) ){
+    printMonth = true; 
+    // if there is a month argument, print shows in that month
+    if ( optarg ){
+      month = optarg;
+    }
+  }
+  
+  if ( optind != argc ){
+    cerr << STR_EXTRA_ARG;
+    cerr << STR_USAGE;
+    return EXIT_FAILURE;
+  }
+
+  if ( !Planner::monthIsValid(month)){
+    cerr << INVALID_MONTH << endl;
+    return EXIT_FAILURE;
+  }
+
+  //unsigned int monthInt = Planner::monthToInt(month);
+
+  if ( printMonth ){
+    // TODO: call ourSchedule->printSchedule( monthInt )
+  }
+
+  ourSchedule->printSchedule();
+  
+  return EXIT_SUCCESS;
 
 }
