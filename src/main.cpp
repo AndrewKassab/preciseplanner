@@ -26,22 +26,22 @@ int main( int argc, char *argv[] ){
 
   opt = getopt(argc, argv, FLAGS);
   switch( opt ){
-      case ADD_FLAG:
-        add = true;
-        break;
-      case PRINT_FLAG:
-        print = true;
-        break;
-      case NEXT_FLAG:
-        next = true;
-        break;
-      case HELP_FLAG:
-        cout << STR_USAGE;
-        return EXIT_SUCCESS;
-      // Invalid flags 
-      case UNKNOWN_FLAG:
-        cerr << STR_USAGE;
-        return EXIT_FAILURE;
+    case ADD_FLAG:
+      add = true;
+      break;
+    case PRINT_FLAG:
+      print = true;
+      break;
+    case NEXT_FLAG:
+      next = true;
+      break;
+    case HELP_FLAG:
+      cout << STR_USAGE;
+      return EXIT_SUCCESS;
+    // Invalid flags 
+    case UNKNOWN_FLAG:
+      cerr << STR_USAGE;
+      return EXIT_FAILURE;
   }
 
   Schedule * ourSchedule = Planner::readSchedule();
@@ -61,6 +61,7 @@ int main( int argc, char *argv[] ){
   // Print the next show
   if ( next ){
     // TODO: call printNext()
+    ourSchedule->printNext();
     return EXIT_SUCCESS;
   }
 
@@ -89,7 +90,7 @@ int main( int argc, char *argv[] ){
     return EXIT_FAILURE;
   }
 
-  if ( !Planner::monthIsValid(month)){
+  if ( printMonth && !Planner::monthIsValid(month)){
     cerr << INVALID_MONTH << endl;
     return EXIT_FAILURE;
   }
