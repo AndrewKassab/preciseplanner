@@ -14,7 +14,8 @@ SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp $(SRC)/Schedule.cpp \
 EXE 		= preciseplanner
 
 OBJS_TEST	= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Schedule.o \
-			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readSchedule.o
+			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readSchedule.o \
+				$(OBJ)/$(SRC)/Planner.o
 
 # our c++ compiler
 CC=g++
