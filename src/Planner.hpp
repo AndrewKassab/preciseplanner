@@ -5,7 +5,7 @@
 #include "Show.hpp"
 #include "Schedule.hpp"
 
-#define FILE_PATH "/home/precisemotion/Documents/worksapce/cpp/preciseplanner/data/schedule.txt"
+#define FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/schedule.txt"
 #define FLAGS "apnh"
 #define PRINT_FLAGS "m"
 

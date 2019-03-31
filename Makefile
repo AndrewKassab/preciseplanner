@@ -103,3 +103,15 @@ testPrint: init $(OBJS)
 	@echo "Running testPrint..."
 	@echo ""
 	@./$(BUILD)/$(TEST)/testPrint 
+
+testRead: init $(OBJS)
+	@echo "Compiling testRead.cpp"
+	$(CC) -c -g $(TEST)/testRead.cpp
+	$(CC) -Wall -o testRead testRead.o $(OBJS_TEST)
+	@mv testRead.o $(OBJ)/$(TEST)
+	@mv testRead $(BUILD)/$(TEST)
+	@echo "Compilation Successful!"
+	@echo ""
+	@echo "Running testRead..."
+	@echo ""
+	@./$(BUILD)/$(TEST)/testRead 
