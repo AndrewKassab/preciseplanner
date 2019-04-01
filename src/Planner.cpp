@@ -4,7 +4,8 @@
 
 /**
  * Returns the month as an int by examining which 
- * month it is.
+ * month it is. Assume we pass in a valid month or integer string
+ * between 1-12.
  * 
  * TODO: Pass in the system time, check the month, and adjust
  * the int value accordingly by adding 12 if it is the next year 
@@ -50,6 +51,8 @@ unsigned int Planner::monthToInt( string inputMonth ){
   }
   else if ( inputMonth == "december"){
     monthAsInt = 12; 
+  } else {
+    monthAsInt = stoi(inputMonth);
   }
 
   return monthAsInt;
@@ -85,7 +88,7 @@ bool Planner::monthIsValid( string inputMonth ){
     month = stoi(inputMonth);
   // User did not input an integer
   } catch ( invalid_argument& ){
-      return false;
+    return false;
   }
 
   if ( month > 12 || month < 1 ){

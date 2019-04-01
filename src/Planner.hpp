@@ -6,15 +6,14 @@
 #include "Schedule.hpp"
 
 #define FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/schedule.txt"
-#define FLAGS "apnh"
-#define PRINT_FLAGS "m"
+#define FLAGS "apnhm"
 
 #define ADD_FLAG 'a'
 #define PRINT_FLAG 'p'
 #define NEXT_FLAG 'n'
 #define HELP_FLAG 'h'
-#define UNKNOWN_FLAG '?'
 #define MONTH_FLAG 'm'
+#define UNKNOWN_FLAG '?'
 
 #define INVALID_MONTH "Invalid month input specified, exiting..."
 
@@ -22,8 +21,8 @@
 "Usage: planner [-apnmh]\n"\
 "   -a \t begin adding new shows to schedule\n"\
 "   -p \t prints out the entire schedule of shows\n"\
-"   -m \t [month] following 'p', prints out shows only\n"\
-"      \t in current or specified month\n"\
+"   -m \t [month] prints out shows only\n"\
+"      \t in the current or specified month\n"\
 "   -n \t prints out the next show\n"\
 "   -h \t help, displays usage information\n"
 

@@ -55,7 +55,6 @@ void Schedule::printSchedule(){
 * Prints out the shows in the schedule that take place
 * during the specified month, using the printShow method
 * for each show.
-* TODO: Finish and Change indentation
 */
 void Schedule::printSchedule( int & month ){
 
@@ -63,7 +62,6 @@ void Schedule::printSchedule( int & month ){
   int index = 0;
 
   // search schedule till we find the first show in the given month
-  // of interest
   while ( !currentShow ){
     if ( schedule->at(index)->getMonth() == month ){
       currentShow = schedule->at(index);
@@ -71,9 +69,10 @@ void Schedule::printSchedule( int & month ){
     index++;
   }
 
-  while ( currentShow->getMonth() == month ){
-    // TODO: print that show
-    // set currentShow to next show 
+  while ( currentShow && currentShow->getMonth() == month ){
+    currentShow->printShow();
+    index++;
+    currentShow = schedule->at(index);
   }
 
 }
