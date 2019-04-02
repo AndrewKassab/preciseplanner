@@ -52,7 +52,7 @@ void Schedule::printSchedule(){
   auto it = schedule->begin();
   auto end = schedule->end();
 
-  cout << "---------Schedule---------" << endl;
+  cout << "-------------Schedule-------------" << endl;
 
   while ( it != end ){
     (*it)->printShow();
@@ -84,7 +84,7 @@ void Schedule::printSchedule( int & month ){
     return;
   }
 
-  cout << "---------Shows in " << Planner::monthToString(month) << "---------" << endl;
+  cout << "-----------Shows in " << Planner::monthToString(month) << "-----------\n"; 
 
   while ( ( it != end ) && ( (*it)->getMonth() == month ) ){
     (*it)->printShow();
@@ -97,7 +97,7 @@ void Schedule::printSchedule( int & month ){
 * Prints the very next upcoming show (the first in our schedule)
 */
 void Schedule::printNext(){
-  cout << "---------Next Show---------" << endl;
+  cout << "------------Next Show------------" << endl;
   schedule->at(0)->printShow();
 }
 

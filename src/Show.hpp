@@ -1,5 +1,6 @@
 #ifndef SHOW_HPP
 #define SHOW_HPP
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,9 +10,6 @@ using namespace std;
 
 /**
  * Stores a show object.
- * 
- * TODO: Function to search google for a show 
- * and open the results in a webpage
  */
 class Show{
 
@@ -19,6 +17,7 @@ private:
   string name;
   unsigned int month;
   unsigned int day;
+  // TODO: unsigned int year;
 
 public:
   Show();

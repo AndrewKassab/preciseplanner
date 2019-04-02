@@ -82,25 +82,30 @@ int main( int argc, char *argv[] ){
   if ( printMonth ){
 
     string month = "";
+    int monthAsInt = 0;
 
     if ( argc == 3 ){
       month = argv[2];
-    } else if ( argc > 3 ){
+      if ( !Planner::monthIsValid(month) ){
+        cerr << INVALID_MONTH << endl;
+        delete ourSchedule;
+        return EXIT_FAILURE;
+      } else {
+        monthAsInt = Planner::monthToInt(month);
+      }
+    } 
+    else if ( argc > 3 ){
       cerr << STR_EXTRA_ARG;
       cerr << STR_USAGE;
       delete ourSchedule;
       return EXIT_FAILURE;
-    } else {
-      // TODO: set month to current system time
+    } 
+    else {
+      time_t theTime = time(NULL);
+      struct tm *aTime = localtime(&theTime);
+      monthAsInt = aTime->tm_mon + 1;
     }
 
-    if ( !Planner::monthIsValid(month) ){
-      cerr << INVALID_MONTH << endl;
-      delete ourSchedule;
-      return EXIT_FAILURE;
-    }
-
-    int monthAsInt = Planner::monthToInt(month);
     ourSchedule->printSchedule(monthAsInt);
   } 
 

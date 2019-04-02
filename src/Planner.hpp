@@ -2,6 +2,7 @@
 #define PLANNER_HPP
 
 #include <iostream>
+#include <time.h>
 #include "Show.hpp"
 #include "Schedule.hpp"
 
@@ -29,7 +30,6 @@
 
 #define STR_EXTRA_ARG "Invalid, extra arguments detected\n"
 
-// TODO: Add more functionalities
 class Planner{
 public:
 
@@ -57,6 +57,12 @@ public:
    * Checks if a month input is valid 
    */
   static bool monthIsValid( string inputMonth );
+
+  /**
+   * Prompts user to remove shows from the schedule
+   * TODO: 
+   */
+  static bool removeShows( Schedule * showSchedule );
 
 };
 

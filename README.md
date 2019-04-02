@@ -17,5 +17,6 @@
 - Festival class that extends show, holds lineup of artists. 
 
 # TODO (Version 1.0)
-- Set month to current system time if no month is passed in
-- Filter out duplicate shows and archive shows that have already passed
+- Archive shows that have already passed
+- Add non-linux time functionalities 
+- Finish removeShows
