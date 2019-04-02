@@ -12,7 +12,7 @@ OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Schedule.o \
 SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp $(SRC)/Schedule.cpp \
 			  $(SRC)/addShows.cpp $(SRC)/readWrite.cpp $(SRC)/main.cpp \
 			  $(SRC)/Planner.cpp $(SRC)/removeShows.cpp
-EXE 		= preciseplanner
+EXE 		= planner 
 
 OBJS_TEST	= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Schedule.o \
 			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readWrite.o \

@@ -12,6 +12,7 @@
 - planner -n: print the next show in the schedule
 - planner -p: print the schedule
 - planner -m (month): print the schedule for current or specified month
+- planner -h: display usage
   
 # Ideas / Goals:
 - Option to open / go to URL to purchase tickets for an event.
