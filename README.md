@@ -6,17 +6,19 @@
   file, check for the next upcoming event, see all shows within a specific time frame,
   and more.
 
-# Features
-- TODO: Add details here
+# USAGE
+- planner -a : add shows to the schedule
+- planner -r: remove shows from the schedule
+- planner -n: print the next show in the schedule
+- planner -p: print the schedule
+- planner -m (month): print the schedule for current or specified month
   
 # Ideas / Goals:
 - Option to open / go to URL to purchase tickets for an event.
-- Clear out events that have already passed, or archive them.
+- archive old shows.
 - Filter for already existing shows.
 - Use more ideal data structure for storing shows ?
 - Festival class that extends show, holds lineup of artists. 
 
 # TODO (Version 1.0)
-- Archive shows that have already passed
-- Add non-linux time functionalities 
-- Finish removeShows
+- Acknowledge year of show 
