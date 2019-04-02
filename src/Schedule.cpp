@@ -1,4 +1,5 @@
 #include "Schedule.hpp"
+#include "Planner.hpp"
 
 // Constructor used for creating a brand new schedule
 Schedule::Schedule(){
@@ -13,9 +14,11 @@ Schedule::Schedule( vector<Show*>* showVector ){
 
 // Destructor, deletes all allocated memory
 Schedule::~Schedule(){
-  while ( !schedule->empty()) {
-    delete schedule->back();
-    schedule->pop_back();
+  auto it = schedule->begin();
+  auto end = schedule->end();
+  while ( it != end ){
+    delete (*it);
+    it++;
   }
   delete schedule;
 }
@@ -43,12 +46,19 @@ void Schedule::add( Show * newShow ){
 /**
 * Prints out the entire schedule, using the printShow method
 * for each show.
-* TODO: Change to use an iterator instead
 */
 void Schedule::printSchedule(){
-  for ( int i = 0; i < schedule->size(); i++){
-    schedule->at(i)->printShow();
+
+  auto it = schedule->begin();
+  auto end = schedule->end();
+
+  cout << "---------Schedule---------" << endl;
+
+  while ( it != end ){
+    (*it)->printShow();
+    it++;
   }
+
 }
 
 /**
@@ -61,18 +71,24 @@ void Schedule::printSchedule( int & month ){
   Show * currentShow;
   int index = 0;
 
+  auto it = schedule->begin();
+  auto end = schedule->end();
+
   // search schedule till we find the first show in the given month
-  while ( !currentShow ){
-    if ( schedule->at(index)->getMonth() == month ){
-      currentShow = schedule->at(index);
-    }
-    index++;
+  while ( ( it != end ) && ( (*it)->getMonth() != month ) ){
+    it++;
   }
 
-  while ( currentShow && currentShow->getMonth() == month ){
-    currentShow->printShow();
-    index++;
-    currentShow = schedule->at(index);
+  if ( it == end ){
+    cout << "No shows present in " << Planner::monthToString(month) << endl;
+    return;
+  }
+
+  cout << "---------Shows in " << Planner::monthToString(month) << "---------" << endl;
+
+  while ( ( it != end ) && ( (*it)->getMonth() == month ) ){
+    (*it)->printShow();
+    it++;
   }
 
 }
@@ -81,6 +97,7 @@ void Schedule::printSchedule( int & month ){
 * Prints the very next upcoming show (the first in our schedule)
 */
 void Schedule::printNext(){
+  cout << "---------Next Show---------" << endl;
   schedule->at(0)->printShow();
 }
 

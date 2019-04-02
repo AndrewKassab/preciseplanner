@@ -91,15 +91,3 @@ testAdd: init $(OBJS)
 	@echo "Running testAdd..."
 	@echo ""
 	@./$(BUILD)/$(TEST)/testAdd 
-
-testPrint: init $(OBJS)
-	@echo "Compiling testPrint.cpp"
-	$(CC) -c -g $(TEST)/testPrint.cpp
-	$(CC) -Wall -o testPrint testPrint.o $(OBJS_TEST)
-	@mv testPrint.o $(OBJ)/$(TEST)
-	@mv testPrint $(BUILD)/$(TEST)
-	@echo "Compilation Successful!"
-	@echo ""
-	@echo "Running testPrint..."
-	@echo ""
-	@./$(BUILD)/$(TEST)/testPrint 

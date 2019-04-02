@@ -6,6 +6,7 @@
 #include "Schedule.hpp"
 
 #define FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/schedule.txt"
+
 #define FLAGS "apnhm"
 
 #define ADD_FLAG 'a'
@@ -46,6 +47,11 @@ public:
    * Converts a string representation of a month to a number
    */
   static unsigned int monthToInt( string inputMonth );
+
+  /**
+   * Converts an int representation of a month to a string 
+   */
+  static string monthToString( unsigned int inputMonth );
 
   /**
    * Checks if a month input is valid 

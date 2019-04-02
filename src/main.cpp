@@ -1,3 +1,4 @@
+#include <ctime>
 #include "Planner.hpp"
 #include "getopt.h"
 
@@ -19,7 +20,6 @@ int main( int argc, char *argv[] ){
   bool printMonth = false;
   bool add = false;
   bool next = false;
-  char * month; // TODO: set to current system month
 
   opt = getopt(argc, argv, FLAGS);
   
@@ -50,10 +50,8 @@ int main( int argc, char *argv[] ){
       return EXIT_FAILURE;
   }
 
-  cout << month << endl;
-
   // there are still more arguments 
-  if ( optind != argc ){
+  if ( !printMonth && optind != argc ){
     cerr << STR_EXTRA_ARG;
     cerr << STR_USAGE;
     return EXIT_FAILURE;
@@ -64,33 +62,49 @@ int main( int argc, char *argv[] ){
   // Add shows functionality
   if ( add ){
     Planner::addShows(ourSchedule);
-    // TODO: delete ourSchedule;
+    delete ourSchedule;
     return EXIT_SUCCESS;
   }
 
   // Print the next show
   if ( next ){
     ourSchedule->printNext();
-    // TODO: delete ourSchedule;
+    delete ourSchedule;
     return EXIT_SUCCESS;
   }
 
   if ( print ){
     ourSchedule->printSchedule();
-    // TODO: delete ourSchedule;
+    delete ourSchedule;
     return EXIT_SUCCESS;
   }
 
   if ( printMonth ){
+
+    string month = "";
+
+    if ( argc == 3 ){
+      month = argv[2];
+    } else if ( argc > 3 ){
+      cerr << STR_EXTRA_ARG;
+      cerr << STR_USAGE;
+      delete ourSchedule;
+      return EXIT_FAILURE;
+    } else {
+      // TODO: set month to current system time
+    }
+
     if ( !Planner::monthIsValid(month) ){
       cerr << INVALID_MONTH << endl;
+      delete ourSchedule;
       return EXIT_FAILURE;
     }
+
     int monthAsInt = Planner::monthToInt(month);
     ourSchedule->printSchedule(monthAsInt);
   } 
 
-  // TODO: delete ourSchedule;
+  delete ourSchedule;
   return EXIT_SUCCESS;
 
 }

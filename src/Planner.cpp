@@ -59,6 +59,65 @@ unsigned int Planner::monthToInt( string inputMonth ){
 }
 
 /**
+ * Returns the month as an int by examining which 
+ * month it is. Assume we pass in a valid month or integer string
+ * between 1-12.
+ * 
+ * TODO: Pass in the system time, check the month, and adjust
+ * the int value accordingly by adding 12 if it is the next year 
+ * from now, so that if we are march, and a show is next year's january, 
+ * it doesn't appear to come before one in the rest of the year.
+ */
+ string Planner::monthToString( unsigned int inputMonth ){
+
+  string monthAsString = "";
+
+  switch (inputMonth){
+    case 1:
+      monthAsString = "January";
+      break;
+    case 2:
+      monthAsString = "February";
+      break;
+    case 3:
+      monthAsString = "March";
+      break;
+    case 4:
+      monthAsString = "April";
+      break;
+    case 5:
+      monthAsString = "May";
+      break;
+    case 6:
+      monthAsString = "June";
+      break;
+    case 7:
+      monthAsString = "July";
+      break;
+    case 8:
+      monthAsString = "August";
+      break;
+    case 9:
+      monthAsString = "September";
+      break;
+    case 10:
+      monthAsString = "October";
+      break;
+    case 11:
+      monthAsString = "November";
+      break;
+    case 12:
+      monthAsString = "December";
+      break;
+    default:
+      cout << "Error, invalid month as integer passed in, exiting..." << endl;
+      exit(-1);
+  }
+
+  return monthAsString;
+}
+
+/**
  * Makes sure a valid month is entered
  *
  * Returns: True if valid , false otherwise
