@@ -58,4 +58,27 @@ Schedule * Planner::readSchedule(){
   inputFile.close();
 
   return newSchedule;
+
+}
+
+/**
+ * Writes the showSchedule's contents to the output file
+ */
+void Planner::writeSchedule( Schedule * showSchedule ){
+
+  ofstream outputFile;
+  outputFile.open(FILE_PATH, ios::binary);
+
+  // output schedule into file
+  for ( int i = 0; i < showSchedule->size(); i++){
+    Show currentShow = *(showSchedule->get(i));
+    outputFile << currentShow.getName() << "\n";
+    outputFile << currentShow.getMonth() << "\n";
+    outputFile << currentShow.getDay() << "\n";
+  }
+
+  outputFile << "\n";
+
+  // free memory
+  outputFile.close();
 }

@@ -8,9 +8,10 @@
 
 #define FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/schedule.txt"
 
-#define FLAGS "apnhm"
+#define FLAGS "arpnhm"
 
 #define ADD_FLAG 'a'
+#define REMOVE_FLAG 'r'
 #define PRINT_FLAG 'p'
 #define NEXT_FLAG 'n'
 #define HELP_FLAG 'h'
@@ -18,6 +19,7 @@
 #define UNKNOWN_FLAG '?'
 
 #define INVALID_MONTH "Invalid month input specified, exiting..."
+#define INVALID_INPUT "Invalid input, please try again."
 
 #define STR_USAGE \
 "Usage: planner [-apnmh]\n"\
@@ -44,6 +46,11 @@ public:
   static Schedule * readSchedule();
 
   /**
+   * Writes the schedule to the schedule file
+   */
+  static void writeSchedule( Schedule * showSchedule );
+
+  /**
    * Converts a string representation of a month to a number
    */
   static unsigned int monthToInt( string inputMonth );
@@ -60,9 +67,8 @@ public:
 
   /**
    * Prompts user to remove shows from the schedule
-   * TODO: 
    */
-  static bool removeShows( Schedule * showSchedule );
+  static void removeShows( Schedule * showSchedule );
 
 };
 

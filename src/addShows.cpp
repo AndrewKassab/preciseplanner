@@ -68,21 +68,7 @@ void Planner::addShows( Schedule * showSchedule ){
   // sort the schedule by dates and exit the method
   sort(showSchedule->begin(), showSchedule->end(), Show::compareDates );
 
-  ofstream outputFile;
-  outputFile.open("data/schedule.txt", ios::binary);
-
-  // output schedule into file
-  for ( int i = 0; i < showSchedule->size(); i++){
-    Show currentShow = *(showSchedule->get(i));
-    outputFile << currentShow.getName() << "\n";
-    outputFile << currentShow.getMonth() << "\n";
-    outputFile << currentShow.getDay() << "\n";
-  }
-
-  outputFile << "\n";
-
-  // free memory
-  outputFile.close();
+  Planner::writeSchedule( showSchedule );
 
   cout << "Finished adding! Exiting... " << endl;
 

@@ -18,7 +18,8 @@ public:
   unsigned int size();
   bool empty();
   void add(Show * newShow);
-  Show* get(int & index);
+  void remove(int & index);
+  Show * get(int & index);
   vector<Show*>::iterator begin();
   vector<Show*>::iterator end();
 

@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <cstring>
 
-#define INVALID_MSG "Invalid input, please try again."
 #define MAX_DAYS 31
 #define BASE 10
 
@@ -46,7 +45,7 @@ bool Show::setMonth( string inputMonth ){
       }
     }
 
-    cout << INVALID_MSG << endl;
+    cout << INVALID_INPUT << endl;
     return false;
   } 
 
@@ -55,12 +54,12 @@ bool Show::setMonth( string inputMonth ){
     month = stoi(inputMonth);
   // User did not input an integer
   } catch ( invalid_argument& ){
-    cout << INVALID_MSG << endl;
+    cout << INVALID_INPUT << endl;
     return false;
   }
 
   if ( month > 12 || month < 1 ){
-    cout << INVALID_MSG << endl;
+    cout << INVALID_INPUT << endl;
     return false;
   }
 
@@ -82,12 +81,12 @@ bool Show::setDay( string d ){
   try {
     day = stoi(d);
   } catch ( invalid_argument& ){
-    cout << INVALID_MSG << endl;
+    cout << INVALID_INPUT << endl;
     return false;
   }
 
   if ( (day >= MAX_DAYS) || (day == 0) ){
-    cout << INVALID_MSG << endl;
+    cout << INVALID_INPUT << endl;
     day = 0;
     return false;
   }

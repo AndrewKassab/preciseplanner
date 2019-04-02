@@ -6,16 +6,17 @@ OBJ=$(BUILD)/obj
 
 HEADERS		= $(SRC)/Show.hpp $(SRC)/Planner.hpp $(SRC)/Schedule.hpp
 OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Schedule.o \
-			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readSchedule.o \
-			  $(OBJ)/$(SRC)/main.o $(OBJ)/$(SRC)/Planner.o
+			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readWrite.o \
+			  $(OBJ)/$(SRC)/main.o $(OBJ)/$(SRC)/Planner.o \
+				$(OBJ)/$(SRC)/removeShows.o
 SRCS 		= $(SRC)/Show.cpp $(SRC)/Planner.cpp $(SRC)/Schedule.cpp \
-			  $(SRC)/addShows.cpp $(SRC)/readSchedule.cpp $(SRC)/main.cpp \
-			  $(SRC)/Planner.cpp
+			  $(SRC)/addShows.cpp $(SRC)/readWrite.cpp $(SRC)/main.cpp \
+			  $(SRC)/Planner.cpp $(SRC)/removeShows.cpp
 EXE 		= preciseplanner
 
 OBJS_TEST	= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Schedule.o \
-			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readSchedule.o \
-				$(OBJ)/$(SRC)/Planner.o
+			  $(OBJ)/$(SRC)/addShows.o $(OBJ)/$(SRC)/readWrite.o \
+				$(OBJ)/$(SRC)/Planner.o $(OBJ)/$(SRC)/removeShows.o
 
 # our c++ compiler
 CC=g++

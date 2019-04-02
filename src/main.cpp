@@ -20,6 +20,7 @@ int main( int argc, char *argv[] ){
   bool printMonth = false;
   bool add = false;
   bool next = false;
+  bool remove = false;
 
   opt = getopt(argc, argv, FLAGS);
   
@@ -42,6 +43,9 @@ int main( int argc, char *argv[] ){
     case MONTH_FLAG:
       printMonth = true;
       break;
+    case REMOVE_FLAG:
+      remove = true;
+      break;
     case HELP_FLAG:
       cout << STR_USAGE;
       return EXIT_SUCCESS;
@@ -59,14 +63,18 @@ int main( int argc, char *argv[] ){
 
   Schedule * ourSchedule = Planner::readSchedule();
 
-  // Add shows functionality
   if ( add ){
     Planner::addShows(ourSchedule);
     delete ourSchedule;
     return EXIT_SUCCESS;
   }
 
-  // Print the next show
+  if ( remove ){
+    Planner::removeShows(ourSchedule);
+    delete ourSchedule;
+    return EXIT_SUCCESS;
+  }
+
   if ( next ){
     ourSchedule->printNext();
     delete ourSchedule;
@@ -84,6 +92,7 @@ int main( int argc, char *argv[] ){
     string month = "";
     int monthAsInt = 0;
 
+    // use current month if none passed in 
     if ( argc == 3 ){
       month = argv[2];
       if ( !Planner::monthIsValid(month) ){

@@ -44,6 +44,14 @@ void Schedule::add( Show * newShow ){
 }
 
 /**
+ * Removes a show at the specific index
+ */
+void Schedule::remove( int & index ){
+  schedule->erase(schedule->begin() + index);
+  isize--;
+}
+
+/**
 * Prints out the entire schedule, using the printShow method
 * for each show.
 */
@@ -51,12 +59,15 @@ void Schedule::printSchedule(){
 
   auto it = schedule->begin();
   auto end = schedule->end();
+  int index = 1;
 
-  cout << "-------------Schedule-------------" << endl;
+  cout << "----------------Schedule----------------" << endl;
 
   while ( it != end ){
+    cout << index << ": ";
     (*it)->printShow();
     it++;
+    index++;
   }
 
 }
@@ -97,7 +108,7 @@ void Schedule::printSchedule( int & month ){
 * Prints the very next upcoming show (the first in our schedule)
 */
 void Schedule::printNext(){
-  cout << "------------Next Show------------" << endl;
+  cout << "---------------Next Show---------------" << endl;
   schedule->at(0)->printShow();
 }
 
