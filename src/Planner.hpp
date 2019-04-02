@@ -6,7 +6,8 @@
 #include "Show.hpp"
 #include "Schedule.hpp"
 
-#define FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/schedule.txt"
+#define SCH_FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/ppschedule.txt"
+#define ARCH_FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/pparchive.txt"
 
 #define FLAGS "arpnhm"
 

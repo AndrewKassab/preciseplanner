@@ -6,8 +6,7 @@
  * 
  * Returns: Schedule of shows
  * 
- * TODO: Filter out or archive shows that have already passed,
- * output them to an archive file
+ * TODO: archive shows that have already passed to a specific file
  */
 Schedule * Planner::readSchedule(){
   
@@ -16,7 +15,7 @@ Schedule * Planner::readSchedule(){
   ifstream inputFile;
 
   // Open file
-  inputFile.open( FILE_PATH , ios::binary);
+  inputFile.open( SCH_FILE_PATH , ios::binary);
   
   if (!inputFile){
     cout << "File not found, new file created...\n" << endl;
@@ -67,7 +66,7 @@ Schedule * Planner::readSchedule(){
 void Planner::writeSchedule( Schedule * showSchedule ){
 
   ofstream outputFile;
-  outputFile.open(FILE_PATH, ios::binary);
+  outputFile.open( SCH_FILE_PATH, ios::binary);
 
   // output schedule into file
   for ( int i = 0; i < showSchedule->size(); i++){
