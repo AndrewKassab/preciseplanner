@@ -10,7 +10,7 @@ using namespace std;
 * Handles the '-a' parameter where a user is prompted
 * to add new shows to the schedule. The user will continue
 * being prompted until they decide to quit. 
-* TODO: Filter out duplicates 
+* TODO: filter out duplicates(?)
 */
 void Planner::addShows( Schedule * showSchedule ){
 
@@ -48,7 +48,6 @@ void Planner::addShows( Schedule * showSchedule ){
   cout << "Add this show? (y/n): ";
   cin >> response;
 
-  // Make sure user wants to add the show as inputted
   if ( response == "y" || response == "Y" || response == "" ){
     showSchedule->add(newShow);
     cout << "Show added!" << endl;
@@ -57,13 +56,12 @@ void Planner::addShows( Schedule * showSchedule ){
     cout << "Canceling addition..." << endl;
   }
 
-  // prompt user if they want to continue adding shows
   response = "";
   cout << "Would you like to continue adding shows? (y/n): ";
   cin >> response;
 
   // call method again if user wishes to continue
-  if (response == "y" || response == "Y" || response == ""){
+  if (response == "y" || response == "Y" ){
     // clear newline character
     getchar();
     addShows(showSchedule);

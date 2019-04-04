@@ -24,7 +24,7 @@ void Planner::removeShows( Schedule * showSchedule ){
       cout << "Exiting..." << endl;
       break;
     }
-    else if ( index >= showSchedule->size() ){
+    else if ( index > showSchedule->size() ){
       cout << INVALID_INPUT << endl;
       continue;
     }    

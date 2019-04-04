@@ -3,6 +3,7 @@ TEST=test
 SRC=src
 BUILD=build
 OBJ=$(BUILD)/obj
+DATA=data
 
 HEADERS		= $(SRC)/Show.hpp $(SRC)/Planner.hpp $(SRC)/Schedule.hpp
 OBJS		= $(OBJ)/$(SRC)/Show.o $(OBJ)/$(SRC)/Schedule.o \
@@ -66,6 +67,9 @@ new:
 	make clean
 	make
 
+wipedata:
+	@rm -rf data/*
+
 #
 # Unit tests
 # 
@@ -80,15 +84,3 @@ testCompare: init $(OBJS)
 	@echo "Running testCompare..."
 	@echo ""
 	@./$(BUILD)/$(TEST)/testCompare
-
-testAdd: init $(OBJS)
-	@echo "Compiling testAdd.cpp"
-	$(CC) -c -g $(TEST)/testAdd.cpp
-	$(CC) -Wall -o testAdd testAdd.o $(OBJS_TEST)
-	@mv testAdd.o $(OBJ)/$(TEST)
-	@mv testAdd $(BUILD)/$(TEST)
-	@echo "Compilation Successful!"
-	@echo ""
-	@echo "Running testAdd..."
-	@echo ""
-	@./$(BUILD)/$(TEST)/testAdd 

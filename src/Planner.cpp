@@ -6,11 +6,6 @@
  * Returns the month as an int by examining which 
  * month it is. Assume we pass in a valid month or integer string
  * between 1-12.
- * 
- * TODO: Pass in the system time, check the month, and adjust
- * the int value accordingly by adding 12 if it is the next year 
- * from now, so that if we are march, and a show is next year's january, 
- * it doesn't appear to come before one in the rest of the year.
  */
 unsigned int Planner::monthToInt( string inputMonth ){
 
@@ -62,11 +57,6 @@ unsigned int Planner::monthToInt( string inputMonth ){
  * Returns the month as an int by examining which 
  * month it is. Assume we pass in a valid month or integer string
  * between 1-12.
- * 
- * TODO: Pass in the system time, check the month, and adjust
- * the int value accordingly by adding 12 if it is the next year 
- * from now, so that if we are march, and a show is next year's january, 
- * it doesn't appear to come before one in the rest of the year.
  */
  string Planner::monthToString( unsigned int inputMonth ){
 
