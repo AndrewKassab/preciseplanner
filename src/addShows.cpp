@@ -18,7 +18,7 @@ void Planner::addShows( Schedule * showSchedule ){
   string showName;
   string showMonth;
   string showDay;
-  string showTime;
+  string showYear;
 
   Show * newShow = new Show();
   
@@ -33,9 +33,14 @@ void Planner::addShows( Schedule * showSchedule ){
   } while ( !(newShow->setMonth(showMonth)));
 
   do { 
-    cout << "Enter the date for this show: ";
+    cout << "Enter the day for this show: ";
     cin >> showDay;
   } while ( !(newShow->setDay(showDay)) );
+
+  do { 
+    cout << "Enter the year for this show (last 2 digits): ";
+    cin >> showYear;
+  } while ( !(newShow->setYear(showYear)) );
 
   cout << "The show you are adding is as follows: " << endl;
   newShow->printShow();

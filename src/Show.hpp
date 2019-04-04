@@ -17,17 +17,19 @@ private:
   string name;
   unsigned int month;
   unsigned int day;
-  // TODO: unsigned int year;
+  unsigned int year;
 
 public:
   Show();
-  Show( string n, unsigned int m, unsigned int d);
+  Show( string n, unsigned int m, unsigned int d, unsigned int y);
   void setName( string n );
   string getName();
   bool setMonth( string m );
   unsigned int getMonth();
   bool setDay( string d ); 
   unsigned int getDay();
+  bool setYear( string y );
+  unsigned int getYear();
 
   /**
    * Prints out a show and all its contents in the following format:

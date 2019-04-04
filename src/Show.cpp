@@ -7,14 +7,13 @@
 #define MAX_DAYS 31
 #define BASE 10
 
-// default constructor
 Show::Show(){}
 
-// paramaterized constructor used when reading in from binary file
-Show::Show( string n, unsigned int m, unsigned int d){
+Show::Show( string n, unsigned int m, unsigned int d, unsigned int y){
   name = n;
   month = m;
   day = d;
+  year = y;
 }
 
 void Show::setName( string n ){
@@ -103,6 +102,34 @@ unsigned int Show::getDay(){
   return day;
 }
 
+bool Show::setYear( string y ){
+
+  time_t theTime = time(NULL);
+  struct tm *currentTime = localtime(&theTime);
+  unsigned int currentYear = currentTime->tm_year - 100;
+
+  try {
+    year = stoi(y);
+  } catch ( invalid_argument& ){
+    cout << INVALID_INPUT << endl;
+    return false;
+  }
+
+  // past event 
+  if ( (year < currentYear) ){
+    cout << INVALID_INPUT << endl;
+    year = 0;
+    return false;
+  }
+
+  return true;
+
+}
+
+unsigned int Show::getYear(){
+  return year;
+}
+
 /**
  * Checks if a show comes before another show by 
  * comparing their months and dates.
@@ -111,7 +138,10 @@ unsigned int Show::getDay(){
  * 
  */
 bool Show::compareDates(Show * firstShow, Show * secondShow){
-  if (firstShow->getMonth() < secondShow->getMonth()){
+  if ( firstShow->getYear() < secondShow->getYear() ){
+    return true;
+  }
+  else if (firstShow->getMonth() < secondShow->getMonth()){
     return true;
   }
   else if (firstShow->getMonth() == secondShow->getMonth()){
@@ -130,17 +160,17 @@ bool Show::compareDates(Show * firstShow, Show * secondShow){
 void Show::printShow(){
   if ( day < 10 ){
     if ( month < 10 ){
-      cout << "0" << month << "-0" << day << ": " << name << endl;
+      cout << "0" << month << "-0" << day << "-" << year << ": " << name << endl;
     }
     else {
-      cout << month << "-0" << day << ": " << name << endl;
+      cout << month << "-0" << day << "-" << year << ": " << name << endl;
     }
   } else {
     if ( month < 10 ){
-      cout << "0" << month << "-" << day << ": " << name << endl;
+      cout << "0" << month << "-" << day << "-" << year << ": " << name << endl;
     }
     else {
-      cout << month << "-" << day << ": " << name << endl;
+      cout << month << "-" << day << "-" << year << ": " << name << endl;
     }
   }
 }

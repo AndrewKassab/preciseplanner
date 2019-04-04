@@ -63,6 +63,11 @@ void Schedule::printSchedule(){
 
   cout << "----------------Schedule----------------" << endl;
 
+  if ( schedule->size() == 0 ){
+    cout << STR_NO_SHOWS << endl;
+    return;
+  }
+
   while ( it != end ){
     cout << index << ": ";
     (*it)->printShow();
@@ -91,7 +96,7 @@ void Schedule::printSchedule( int & month ){
   }
 
   if ( it == end ){
-    cout << "No shows present in " << Planner::monthToString(month) << endl;
+    cout << STR_NO_SHOWS << " in " << Planner::monthToString(month) << endl;
     return;
   }
 
@@ -109,7 +114,11 @@ void Schedule::printSchedule( int & month ){
 */
 void Schedule::printNext(){
   cout << "---------------Next Show---------------" << endl;
-  schedule->at(0)->printShow();
+  if (schedule->size() > 0){
+    schedule->at(0)->printShow();
+  } else {
+    cout << STR_NO_SHOWS << endl;
+  }
 }
 
 // Returns a Show* object from our schedule at the specified index.

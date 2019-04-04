@@ -18,18 +18,20 @@ Schedule * Planner::readSchedule(){
   archiveFile.open( ARCH_FILE_PATH, ios::binary);
   
   if (!inputFile){
-    cout << "File not found, new file created...\n" << endl;
     return newSchedule;
   }
 
   time_t theTime = time(NULL);
   struct tm *currentTime = localtime(&theTime);
+  int currentMonth = currentTime->tm_mon+1;
+  int currentYear = currentTime->tm_year-100;
+  int currentDay = currentTime->tm_mday +1;
 
   string line = "."; 
   string name;
   unsigned int month;
   unsigned int day;
-  float startTime;
+  unsigned int year;
   string hasTicket;
   bool ticket;
 
@@ -44,12 +46,15 @@ Schedule * Planner::readSchedule(){
     month = stoi(line);
     getline(inputFile, line);
     day = stoi(line);
+    getline(inputFile, line);
+    year = stoi(line);
     // filter out the events that have already passed
-    if (month >= (currentTime->tm_mon+1) && (day >= (currentTime->tm_mday + 1))){
-      Show * newShow = new Show(name,month,day);
+    if ( ( year > currentYear ) || 
+        ( ( month >= currentMonth ) && ( day >= currentDay ) ) ){
+      Show * newShow = new Show(name,month,day,year);
       newSchedule->add(newShow);
     } else {
-      archiveFile << month << "-" << day << ": " << name << "\n";
+      archiveFile << month << "-" << day << "-" << year << ": " << name << "\n";
     }
   }
 
@@ -74,6 +79,7 @@ void Planner::writeSchedule( Schedule * showSchedule ){
     outputFile << currentShow.getName() << "\n";
     outputFile << currentShow.getMonth() << "\n";
     outputFile << currentShow.getDay() << "\n";
+    outputFile << currentShow.getYear() << "\n";
   }
 
   outputFile << "\n";

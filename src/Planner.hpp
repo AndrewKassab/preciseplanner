@@ -33,6 +33,7 @@
 "   -h \t help, displays usage information\n"
 
 #define STR_EXTRA_ARG "Invalid, extra arguments detected\n"
+#define STR_NO_SHOWS "No shows present"
 
 class Planner{
 public:
