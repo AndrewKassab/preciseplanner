@@ -138,6 +138,7 @@ unsigned int Show::getYear(){
  * 
  */
 bool Show::compareDates(Show * firstShow, Show * secondShow){
+  // TODO: Bug! Being ordered incorrectly
   if ( firstShow->getYear() < secondShow->getYear() ){
     return true;
   }
