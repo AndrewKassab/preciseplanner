@@ -23,8 +23,9 @@
 #define INVALID_INPUT "Invalid input, please try again."
 
 #define STR_USAGE \
-"Usage: planner [-apnmh]\n"\
+"Usage: planner [-arpnmh]\n"\
 "   -a \t begin adding new shows to schedule\n"\
+"   -r \t remove shows from the schedule\n"\
 "   -p \t prints out the entire schedule of shows\n"\
 "   -m \t [month] prints out shows only\n"\
 "      \t in the current or specified month\n"\

@@ -6,16 +6,16 @@
  * 
  * Returns: Schedule of shows
  * 
- * TODO: archive shows that have already passed to a specific file
  */
 Schedule * Planner::readSchedule(){
   
   Schedule * newSchedule = new Schedule();
 
   ifstream inputFile;
+  ofstream archiveFile;
 
-  // Open file
   inputFile.open( SCH_FILE_PATH , ios::binary);
+  archiveFile.open( ARCH_FILE_PATH, ios::binary);
   
   if (!inputFile){
     cout << "File not found, new file created...\n" << endl;
@@ -49,7 +49,7 @@ Schedule * Planner::readSchedule(){
       Show * newShow = new Show(name,month,day);
       newSchedule->add(newShow);
     } else {
-      // TODO: Archive show to a different file
+      archiveFile << month << "-" << day << ": " << name << "\n";
     }
   }
 
