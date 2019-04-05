@@ -70,6 +70,11 @@ new:
 wipedata:
 	@rm -rf data/*
 
+install: $(EXE)
+	@sudo chmod 777 ./build/planner 
+	@sudo mv ./build/planner /usr/local/bin 
+	make clean
+
 #
 # Unit tests
 # 

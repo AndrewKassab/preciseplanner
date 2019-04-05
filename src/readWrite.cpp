@@ -21,12 +21,6 @@ Schedule * Planner::readSchedule(){
     return newSchedule;
   }
 
-  time_t theTime = time(NULL);
-  struct tm *currentTime = localtime(&theTime);
-  int currentMonth = currentTime->tm_mon+1;
-  int currentYear = currentTime->tm_year-100;
-  int currentDay = currentTime->tm_mday +1;
-
   string line = "."; 
   string name;
   unsigned int month;
@@ -48,10 +42,9 @@ Schedule * Planner::readSchedule(){
     day = stoi(line);
     getline(inputFile, line);
     year = stoi(line);
+    Show * newShow = new Show(name,month,day,year);
     // filter out the events that have already passed
-    if ( ( year > currentYear ) || 
-        ( ( month >= currentMonth ) && ( day >= currentDay ) ) ){
-      Show * newShow = new Show(name,month,day,year);
+    if ( dateIsValid( newShow ) ){
       newSchedule->add(newShow);
     } else {
       archiveFile << month << "-" << day << "-" << year << ": " << name << "\n";

@@ -42,6 +42,13 @@ void Planner::addShows( Schedule * showSchedule ){
     cin >> showYear;
   } while ( !(newShow->setYear(showYear)) );
 
+  // date entered has passed
+  if ( !dateIsValid( newShow ) ){
+    cout << STR_PAST << endl;
+    addShows(showSchedule);
+    return;
+  }
+
   cout << "The show you are adding is as follows: " << endl;
   newShow->printShow();
 

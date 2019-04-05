@@ -6,8 +6,8 @@
 #include "Show.hpp"
 #include "Schedule.hpp"
 
-#define SCH_FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/ppschedule.txt"
-#define ARCH_FILE_PATH "/home/precisemotion/Documents/workspace/cpp/preciseplanner/data/pparchive.txt"
+#define SCH_FILE_PATH "/etc/pschedule.txt"
+#define ARCH_FILE_PATH "/etc/parchive.txt"
 
 #define FLAGS "arpnhm"
 
@@ -20,7 +20,7 @@
 #define UNKNOWN_FLAG '?'
 
 #define INVALID_MONTH "Invalid month input specified, exiting..."
-#define INVALID_INPUT "Invalid input, please try again."
+#define INVALID_INPUT "Invalid date entered, date has passed."
 
 #define STR_USAGE \
 "Usage: planner [-arpnmh]\n"\
@@ -34,6 +34,7 @@
 
 #define STR_EXTRA_ARG "Invalid, extra arguments detected\n"
 #define STR_NO_SHOWS "No shows present"
+#define STR_PAST "Invalid input, past date entered."
 
 class Planner{
 public:
@@ -72,6 +73,11 @@ public:
    * Prompts user to remove shows from the schedule
    */
   static void removeShows( Schedule * showSchedule );
+  
+  /**
+   * Checks if a show has a valid date, ie. it isn't in the past.
+   */
+  static bool dateIsValid( Show * ourShow );
 
 };
 

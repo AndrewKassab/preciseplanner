@@ -147,3 +147,23 @@ bool Planner::monthIsValid( string inputMonth ){
   return true;
 
 }
+
+/**
+ * Checks if a show has a valid date by checking the current time
+ * and making sure it is not before that or in the past.
+ */
+bool Planner::dateIsValid( Show * ourShow ){
+
+  time_t theTime = time(NULL);
+  struct tm *currentTime = localtime(&theTime);
+  int currentMonth = currentTime->tm_mon+1;
+  int currentYear = currentTime->tm_year-100;
+  int currentDay = currentTime->tm_mday +1;
+  
+    if ( ( ourShow->getYear() > currentYear ) || 
+    ( ( ourShow->getMonth() >= currentMonth ) && 
+    ( ourShow->getDay() >= currentDay ) ) ){
+          return true;
+    } else return false;
+
+}
