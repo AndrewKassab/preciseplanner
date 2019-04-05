@@ -31,8 +31,7 @@ CXXFLAGS=-MMD -g -Wall -std=c++11
 # default target, compiles executable, depends on object files
 $(EXE): init $(OBJS) $(MAIN_OBJ)
 	@echo "Linking all object modules..."
-	$(CC) -o $(EXE) $(OBJS) 
-	@echo ""
+	@$(CC) -o $(EXE) $(OBJS) 
 	@echo "Done, Generated executable: $(EXE)"
 	@mv $(EXE) $(BUILD)
 
@@ -40,8 +39,7 @@ $(EXE): init $(OBJS) $(MAIN_OBJ)
 $(OBJ)/$(SRC)/%.o:$(SRC)/%.cpp
 	@echo "Compiling each C++ source file separately ..."
 	$(CC) -c -g $<
-	mv *.o $(OBJ)/$(SRC)
-	@echo ""
+	@mv *.o $(OBJ)/$(SRC)
 
 # object files depend on header files being up to date
 $(OBJS): $(HEADERS)
@@ -70,9 +68,7 @@ new:
 wipedata:
 	@rm -rf ~/.preciseplanner/*
 
-install:
-	@echo "Compiling program..."
-	@make $(EXE)
+install: $(EXE)
 	@sudo chmod 555 ./build/planner 
 	@echo "Moving executable to /usr/local/bin"
 	@sudo mv ./build/planner /usr/local/bin 
@@ -82,8 +78,7 @@ install:
 	@touch ~/.preciseplanner/archive.txt
 	@chmod 777 ~/.preciseplanner/schedule.txt
 	@chmod 777 ~/.preciseplanner/archive.txt
-	@echo "Installation complete, run planner to get started"
-	@make clean
+	@echo "Installation complete, run "planner" to get started."
 
 #
 # Unit tests
