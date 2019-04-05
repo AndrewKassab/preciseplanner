@@ -14,8 +14,12 @@ Schedule * Planner::readSchedule(){
   ifstream inputFile;
   ofstream archiveFile;
 
-  inputFile.open( SCH_FILE_PATH , ios::binary);
-  archiveFile.open( ARCH_FILE_PATH, ios::binary);
+  string homeDir = HOME_DIR;
+  string schedulePath = homeDir + SCH_FILE_PATH;
+  string archivePath = homeDir + ARCH_FILE_PATH;
+
+  inputFile.open( schedulePath , ios::binary);
+  archiveFile.open( archivePath , ios::binary);
   
   if (!inputFile){
     return newSchedule;
@@ -64,7 +68,11 @@ Schedule * Planner::readSchedule(){
 void Planner::writeSchedule( Schedule * showSchedule ){
 
   ofstream outputFile;
-  outputFile.open( SCH_FILE_PATH, ios::binary);
+
+  string homeDir = HOME_DIR;
+  string schedulePath = homeDir + SCH_FILE_PATH;
+
+  outputFile.open( schedulePath, ios::binary);
 
   // output schedule into file
   for ( int i = 0; i < showSchedule->size(); i++){

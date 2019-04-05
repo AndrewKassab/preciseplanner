@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <time.h>
+#include <stdlib.h>
 #include "Show.hpp"
 #include "Schedule.hpp"
 
-#define SCH_FILE_PATH "/etc/pschedule.txt"
-#define ARCH_FILE_PATH "/etc/parchive.txt"
+#define HOME_DIR getenv("HOME")
+#define SCH_FILE_PATH "/.preciseplanner/schedule.txt"
+#define ARCH_FILE_PATH "/.preciseplanner/archive.txt"
 
 #define FLAGS "arpnhm"
 
@@ -20,7 +22,7 @@
 #define UNKNOWN_FLAG '?'
 
 #define INVALID_MONTH "Invalid month input specified, exiting..."
-#define INVALID_INPUT "Invalid date entered, date has passed."
+#define INVALID_INPUT "Invalid input, please try again..."
 
 #define STR_USAGE \
 "Usage: planner [-arpnmh]\n"\
@@ -34,7 +36,7 @@
 
 #define STR_EXTRA_ARG "Invalid, extra arguments detected\n"
 #define STR_NO_SHOWS "No shows present"
-#define STR_PAST "Invalid input, past date entered."
+#define STR_PAST "Invalid date entered, date has passed."
 
 class Planner{
 public:
