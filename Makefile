@@ -68,12 +68,22 @@ new:
 	make
 
 wipedata:
-	@rm -rf data/*
+	@rm -rf ~/.preciseplanner/*
 
-install: $(EXE)
-	@sudo chmod 777 ./build/planner 
+install:
+	@echo "Compiling program..."
+	@make $(EXE)
+	@sudo chmod 555 ./build/planner 
+	@echo "Moving executable to /usr/local/bin"
 	@sudo mv ./build/planner /usr/local/bin 
-	make clean
+	@echo "Creating ~/.preciseplanner directory and necessary files"
+	@mkdir -p ~/.preciseplanner 
+	@touch ~/.preciseplanner/schedule.txt
+	@touch ~/.preciseplanner/archive.txt
+	@chmod 777 ~/.preciseplanner/schedule.txt
+	@chmod 777 ~/.preciseplanner/archive.txt
+	@echo "Installation complete, run planner to get started"
+	@make clean
 
 #
 # Unit tests
