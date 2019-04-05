@@ -45,6 +45,7 @@ void Planner::addShows( Schedule * showSchedule ){
   // date entered has passed
   if ( !dateIsValid( newShow ) ){
     cout << STR_PAST << endl;
+    getchar();
     addShows(showSchedule);
     return;
   }
