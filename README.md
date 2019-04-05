@@ -24,5 +24,4 @@ frame, and more.
 # TODO (Version 1.0)
 - Add edge cases for month / days ( february only has 29 .. etc )
 - Finish completion script
-- Don't allow shows with prior date to be added
 - Figure out install script
