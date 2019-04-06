@@ -35,3 +35,4 @@ sudo make install
 # TODO (Version 1.0)
 - Add edge cases for month / days ( february only has 29 .. etc )
 - Finish completion script
+- Add print archive option
