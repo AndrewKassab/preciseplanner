@@ -17,6 +17,8 @@ cd preciseplanner
 ```
 sudo make install
 ```
+- You should be good to go! Feel free to delete the cloned folder after 
+your installation.
 
 # USAGE
 - planner -a : add shows to the schedule
