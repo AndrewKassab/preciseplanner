@@ -1,4 +1,4 @@
-# preciseplanner (v1.00)
+# preciseplanner (v1.0)
 - This command line program will help a user plan out upcoming concerts 
 and events. It will allow the user to input events, with their corresponding 
 names and dates and sort and organize them all into a schedule sorted by dates. 
