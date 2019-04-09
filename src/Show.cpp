@@ -84,7 +84,7 @@ bool Show::setDay( string d ){
     return false;
   }
 
-  if ( (day >= MAX_DAYS) || (day == 0) ){
+  if ( (day > MAX_DAYS) || (day == 0) ){
     cout << INVALID_INPUT << endl;
     day = 0;
     return false;

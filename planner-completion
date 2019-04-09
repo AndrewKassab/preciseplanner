@@ -1,9 +1,9 @@
 #!/bin/bash
 # Author: Andrew Kassab
 # Description: Handles tab completion for preciseplanner program
-# Date: TODO
+# Date: 4-08-19
 
-OPTS="--add --print --next --remove --month --help"
+PLANNEROPTS="-a -p -n -r -m -h"
 
 # handles completions 
 opt_completions(){
@@ -13,7 +13,7 @@ opt_completions(){
 
     # if we are on the 1st argument
     if [ $COMP_CWORD -eq 1 ]; then
-        COMPREPLY=($(compgen -W "${OPTS}" -- $cur) ) 
+        COMPREPLY=($(compgen -W "${PLANNEROPTS}" -- $cur) ) 
     elif [ $COMP_CWORD -eq 2 ]; then
         case "$prev" in
             "--month")

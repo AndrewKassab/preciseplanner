@@ -44,10 +44,6 @@ $(OBJ)/$(SRC)/%.o:$(SRC)/%.cpp
 # object files depend on header files being up to date
 $(OBJS): $(HEADERS)
 
-# run program
-run:
-	./$(BUILD)/$(EXE)
-
 # clean directory
 clean:
 	@echo "cleaning"
@@ -78,6 +74,8 @@ install: $(EXE)
 	@touch ~/.preciseplanner/archive.txt
 	@chmod 777 ~/.preciseplanner/schedule.txt
 	@chmod 777 ~/.preciseplanner/archive.txt
+	@echo "Setting up bash-completion..."
+	@sudo cp ./planner-completion /etc/bash_completion.d
 	@echo "Installation complete, run "planner" to get started."
 
 #

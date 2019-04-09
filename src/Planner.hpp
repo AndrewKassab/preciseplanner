@@ -29,8 +29,7 @@
 "   -a \t begin adding new shows to schedule\n"\
 "   -r \t remove shows from the schedule\n"\
 "   -p \t prints out the entire schedule of shows\n"\
-"   -m \t [month] prints out shows only\n"\
-"      \t in the current or specified month\n"\
+"   -m \t [month] prints out shows only in the current or specified month\n"\
 "   -n \t prints out the next show\n"\
 "   -h \t help, displays usage information\n"
 
