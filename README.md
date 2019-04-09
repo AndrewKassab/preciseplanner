@@ -28,7 +28,7 @@ your installation.
   
 # Ideas / Goals:
 - Option to open / go to URL to purchase tickets for an event.
-- Filter for already existing shows.
 - Use more ideal data structure for storing shows ?
 - Festival class that extends show, holds lineup of artists. 
 - Add edge cases for specific months ( february can't have over 29 days, etc. )
+- Access the archived shows through the program itself
