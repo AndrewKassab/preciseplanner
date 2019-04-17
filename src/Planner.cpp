@@ -160,10 +160,19 @@ bool Planner::dateIsValid( Show * ourShow ){
   int currentYear = currentTime->tm_year-100;
   int currentDay = currentTime->tm_mday +1;
   
-    if ( ( ourShow->getYear() > currentYear ) || 
-    ( ( ourShow->getMonth() >= currentMonth ) && 
-    ( ourShow->getDay() >= currentDay ) ) ){
-          return true;
-    } else return false;
+  if ( ourShow->getYear() < currentYear ){
+    return false;
+  } 
+  else if ( ourShow->getYear() == currentYear){
+    if ( ourShow->getMonth() > currentMonth ){
+      return true;
+    } else if ( ourShow->getMonth() < currentMonth ){
+      return false;
+    } else {
+      if ( ourShow->getDay() < currentDay ){
+        return false;
+      } else return true;
+    }
+  } else return true;
 
 }
