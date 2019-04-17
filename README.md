@@ -1,4 +1,4 @@
-# preciseplanner (v1.00)
+# preciseplanner (v1.0)
 - This command line program will help a user plan out upcoming concerts 
 and events. It will allow the user to input events, with their corresponding 
 names and dates and sort and organize them all into a schedule sorted by dates. 
@@ -28,7 +28,7 @@ your installation.
   
 # Ideas / Goals:
 - Option to open / go to URL to purchase tickets for an event.
-- Filter for already existing shows.
 - Use more ideal data structure for storing shows ?
 - Festival class that extends show, holds lineup of artists. 
 - Add edge cases for specific months ( february can't have over 29 days, etc. )
+- Access the archived shows through the program itself
